@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cabinet Painting &amp; Refinishing in Kelowna | Companion Painting</title>
+<meta name="description" content="Professional cabinet painting and refinishing across Kelowna and the Okanagan. A sprayed, factory-smooth finish for a fraction of a full reno, backed by a 3-year warranty. Book a free, no-pressure estimate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#101a30; --navy:#132039; --panel:#182741; --line:#2a3a58; --muted:#9fb0c9; --ink:#faf8f5;
+    --brand:#ecab13; --brand-2:#f5c451; --brand-glow:rgba(236,171,19,.32); --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* TOP BAR (logo + tap-to-call only, no nav on an LP) */
+  header{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+    padding:13px 24px;background:rgba(16,26,48,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header .logo{height:28px}
+  .tel{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:var(--brand)}
+  .tel svg{stroke:var(--brand)}
+
+  /* HERO with form above the fold */
+  .hero{position:relative;overflow:hidden}
+  .hero__bg{position:absolute;inset:0;z-index:0}
+  .hero__bg img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.03) brightness(.9)}
+  .hero__bg::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(90deg,rgba(9,15,28,.94) 0%,rgba(9,15,28,.82) 40%,rgba(9,15,28,.6) 100%),
+    linear-gradient(0deg,var(--bg),transparent 40%)}
+  .hero__grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;
+    padding:46px 0 56px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:#f2e3c0;font-weight:600;margin-bottom:18px;border:1px solid rgba(236,171,19,.4);background:rgba(236,171,19,.08);padding:6px 13px;border-radius:999px}
+  .eyebrow .pip{width:6px;height:6px;border-radius:50%;background:var(--brand)}
+  h1{font-family:Fraunces,serif;font-weight:600;font-size:clamp(33px,4.4vw,52px);line-height:1.04;letter-spacing:-.015em;max-width:15ch}
+  h1 .em{font-style:italic;color:var(--brand)}
+  .hero p.sub{margin-top:18px;font-size:17px;color:#e2e9f2;max-width:46ch}
+  .htrust{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px 20px}
+  .htrust .t{display:flex;align-items:center;gap:8px;font-size:13px;color:#e2e9f2;font-weight:500}
+  .htrust .t svg{stroke:var(--brand);flex:0 0 auto}
+
+  /* FORM CARD (locked contract) */
+  .form-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+  .form-card .fc-h{font-family:Fraunces,serif;font-size:22px;font-weight:600}
+  .form-card .fc-s{font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:16px}
+  .form-card label{display:block;font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.03em;margin:12px 0 6px;text-transform:uppercase}
+  .form-card input,.form-card select{width:100%;background:#0d1424;border:1px solid #2c3a55;border-radius:10px;color:#fff;font-size:16px;padding:13px;appearance:none}
+  .form-card input:focus,.form-card select:focus{outline:none;border-color:var(--brand)}
+  .form-card select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%239fb0c9' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+  .hp{position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0}
+  .fc-btn{width:100%;margin-top:18px;background:var(--brand);color:#241a08;font-weight:700;font-size:17px;border:none;border-radius:11px;padding:16px;cursor:pointer;transition:.2s}
+  .fc-btn:hover{filter:brightness(1.05);transform:translateY(-1px)}
+  .fc-micro{margin-top:12px;font-size:11.5px;color:#8fa0b8;text-align:center}
+  .fc-done{display:none;text-align:center;padding:20px 6px}
+  .fc-done.on{display:block}
+  .fc-done .ok{width:52px;height:52px;border-radius:50%;background:rgba(236,171,19,.15);color:var(--brand);display:grid;place-items:center;margin:0 auto 14px}
+
+  /* SECTIONS */
+  section.band{padding:clamp(56px,8vh,92px) 0}
+  .band--navy{background:linear-gradient(180deg,var(--bg),#0e1830)}
+  .kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);font-weight:600;margin-bottom:14px}
+  h2{font-family:Fraunces,serif;font-weight:500;font-size:clamp(27px,3.8vw,42px);line-height:1.08;letter-spacing:-.015em;max-width:20ch}
+  h2 .em{font-style:italic;color:var(--brand)}
+  .lede{margin-top:16px;color:var(--muted);font-size:17px;max-width:56ch}
+  .pains{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px}
+  .pain{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 17px;color:#d3ddea;font-size:15px}
+  .pain .pi{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:rgba(236,171,19,.14);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:12px;margin-top:1px}
+  .steps{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .step .n{font-family:Fraunces,serif;font-size:30px;color:var(--brand);font-weight:600}
+  .step h4{font-size:17px;margin:10px 0 7px;font-weight:600}
+  .step p{color:var(--muted);font-size:14px}
+  .gal{margin-top:36px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .gal figure{border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1;background:var(--panel)}
+  .gal img{width:100%;height:100%;object-fit:cover}
+  .gal .w2{grid-column:span 2;aspect-ratio:2/1}
+  .offer{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:34px 30px;margin-top:8px;text-align:center;max-width:760px;margin-left:auto;margin-right:auto}
+  .offer .warn{color:var(--muted);font-size:14.5px;margin-top:16px}
+  .faq{margin-top:36px;max-width:760px}
+  .faq details{border-bottom:1px solid var(--line);padding:16px 0}
+  .faq summary{cursor:pointer;font-weight:600;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--brand);font-size:22px;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{color:var(--muted);font-size:15px;margin-top:12px}
+  .cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--brand);color:#241a08;font-weight:700;font-size:17px;padding:16px 28px;border-radius:12px;box-shadow:0 14px 40px -8px var(--brand-glow);transition:.2s}
+  .cta-btn:hover{transform:translateY(-2px)}
+  .final{text-align:center;background:radial-gradient(90% 120% at 50% 0%,rgba(236,171,19,.13),transparent 60%),#0e1830}
+  footer{border-top:1px solid var(--line);padding:30px 0;color:#8fa0b8;font-size:13px;background:#0e1830;text-align:center}
+  footer .fl{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center}
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;padding:11px 16px;background:rgba(16,26,48,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+  .sticky-cta a{display:block;text-align:center;background:var(--brand);color:#241a08;font-weight:700;padding:14px;border-radius:11px}
+
+  @media(max-width:860px){
+    .hero__grid{grid-template-columns:1fr;gap:26px;padding:30px 0 40px}
+    .pains{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr;gap:20px}
+    .gal{grid-template-columns:repeat(2,1fr)}
+    .tel span{display:none}
+    .sticky-cta{display:block}
+    body{padding-bottom:70px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="#top"><img class="logo" src="img/logo.png" alt="Companion Painting"></a>
+  <a class="tel" href="tel:+17789465773"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 11.5a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg><span>Call </span>(778) 946 5773</a>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero__bg"><img src="img/cab1.jpg" alt="Freshly refinished kitchen cabinets in Kelowna"></div>
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <span class="eyebrow"><span class="pip"></span> Cabinet Refinishing · Kelowna &amp; the Okanagan</span>
+        <h1>A kitchen that looks new, without the <span class="em">reno price tag</span>.</h1>
+        <p class="sub">Professional cabinet painting and refinishing across Kelowna and the Okanagan. A sprayed, factory-smooth finish that reads like new joinery, for a fraction of a full renovation. Backed by a 3-year warranty.</p>
+        <div class="htrust">
+          <span class="t"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></svg> BC Licensed · FM1112157</span>
+          <span class="t"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg> Fully insured · $3M</span>
+          <span class="t"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg> 3-year warranty</span>
+        </div>
+      </div>
+
+      <!-- FORM CARD (above the fold) -->
+      <div>
+        <form class="form-card" id="lead" method="POST" action="#" novalidate>
+          <div class="fc-h">Book your free estimate</div>
+          <div class="fc-s">Takes 20 seconds. A painter calls you back, no pressure.</div>
+          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+          <label for="town">Your town</label>
+          <select id="town" name="town" required>
+            <option value="" selected disabled>Choose your town…</option>
+            <option>Kelowna</option><option>West Kelowna</option><option>Lake Country</option>
+            <option>Peachland</option><option>Vernon</option><option>Winfield</option><option>Other / nearby</option>
+          </select>
+          <label for="reason">What needs painting?</label>
+          <select id="reason" name="reason" required>
+            <option value="" selected disabled>Choose one…</option>
+            <option>Kitchen cabinets</option><option>Bathroom vanity</option>
+            <option>Built-ins &amp; millwork</option><option>Whole kitchen refresh</option><option>Not sure yet</option>
+          </select>
+          <button class="fc-btn" type="submit">Book my free estimate</button>
+          <div class="fc-micro">BC Licensed FM1112157 · Fully insured · 3-year warranty</div>
+        </form>
+        <div class="form-card fc-done" id="done" style="margin-top:0">
+          <div class="ok"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div class="fc-h">Got it, thank you.</div>
+          <p style="color:var(--muted);margin-top:8px;font-size:14.5px">Taylor will call you back shortly to book your free estimate. Prefer to talk now? Call <a href="tel:+17789465773" style="color:var(--brand);font-weight:600">(778) 946 5773</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / AGITATION -->
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">Before you hire anyone</p>
+    <h2>A cabinet finish is only as good as the <span class="em">prep</span>.</h2>
+    <p class="lede">Cabinets take more abuse than any surface in your home. Skip the prep and it chips in months. Do it right and it lasts for years. Sound familiar?</p>
+    <div class="pains">
+      <div class="pain"><span class="pi">?</span> Cabinets that work fine but look tired and dated.</div>
+      <div class="pain"><span class="pi">?</span> Quoted $20k+ for a full kitchen reno you don't really need.</div>
+      <div class="pain"><span class="pi">?</span> Tried a DIY kit and ended up with brush marks and chips.</div>
+      <div class="pain"><span class="pi">?</span> Worried painted cabinets will just peel and scratch.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="band band--navy">
+  <div class="wrap">
+    <p class="kicker">How we take the stress out of it</p>
+    <h2>A clear plan, a clean site, and a finish that lasts.</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>Free estimate</h4><p>We look at your home, listen to what you want, and give you a clear written quote. The price we say is the price you pay.</p></div>
+      <div class="step"><div class="n">2</div><h4>Degrease, sand &amp; prime</h4><p>Cabinets get cleaned, scuffed and primed with the right bonding products. This is the step that makes it stick.</p></div>
+      <div class="step"><div class="n">3</div><h4>Sprayed, smooth coats</h4><p>Sprayed in a controlled setup for a factory-smooth finish, no brush marks, no roller texture.</p></div>
+      <div class="step"><div class="n">4</div><h4>Reassemble + warranty</h4><p>We rehang everything, walk it with you, and don't finish until you're happy. Backed by a 3-year warranty.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">Recent cabinet &amp; kitchen work</p>
+    <h2>Real kitchens across the Okanagan.</h2>
+    <div class="gal">
+      <figure class="w2"><img src="img/cab1.jpg" alt="Kitchen cabinet refinishing in Kelowna"></figure>
+      <figure><img src="img/int1.jpg" alt="Companion Painting interior work"></figure>
+      <figure><img src="img/com2.jpg" alt="Companion Painting millwork detail"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER + DISQUALIFIER -->
+<section class="band band--navy">
+  <div class="wrap">
+    <div class="offer">
+      <p class="kicker" style="text-align:center">The offer</p>
+      <h2 style="margin:0 auto;max-width:22ch">A free, no-pressure estimate, and a <span class="em">3-year warranty</span> on the work.</h2>
+      <p class="lede" style="margin:16px auto 0">You get a clear written quote, a crew that shows up, a clean site, and a finish that's guaranteed. We're not finished until you're happy.</p>
+      <p class="warn">The honest bit: we're not the cheapest painters in town, and we're not trying to be. If the lowest quote is all that matters, we're probably not your crew. If you want it done right and done once, that's exactly what you get.</p>
+      <div style="margin-top:24px"><a class="cta-btn" href="#lead" onclick="var f=document.getElementById('name');if(f)setTimeout(function(){f.focus()},400)">Book my free estimate
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">Common questions</p>
+    <h2>Good to know before you book.</h2>
+    <div class="faq">
+      <details><summary>Is the estimate really free?</summary><p>Yes. We come out, take a look, and give you a clear written quote with no obligation and no pushy follow-ups. You decide on your terms.</p></details>
+      <details><summary>How soon can you start?</summary><p>Once you're happy with the quote we confirm a start date and tell you what to expect ahead of time, so nothing feels last-minute. Kitchens book up fast, so earlier is better.</p></details>
+      <details><summary>Do you cover my town?</summary><p>We paint across Kelowna, West Kelowna, Lake Country, Peachland, Vernon and nearby. Pick your town on the form and we'll confirm.</p></details>
+      <details><summary>Will the finish chip or peel?</summary><p>Not when it's prepped and sprayed properly. We use bonding primers and durable cabinet coatings built for daily use, and it's backed by our 3-year warranty.</p></details>
+      <details><summary>Do I lose my kitchen for weeks?</summary><p>No. Most cabinet projects are a matter of days, not a full reno timeline. We tell you exactly what to expect upfront.</p></details>
+      <details><summary>Are you licensed and insured?</summary><p>Yes. BC Licensed (FM1112157) and fully insured with $3M liability, and every job is backed by a 3-year warranty.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="band final">
+  <div class="wrap">
+    <h2 style="margin:0 auto;max-width:18ch">Ready when you are.</h2>
+    <p class="lede" style="margin:16px auto 26px">Tell us about your place and we'll take care of the rest.</p>
+    <a class="cta-btn" href="#lead" onclick="var f=document.getElementById('name');if(f)setTimeout(function(){f.focus()},400)">Book my free estimate
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fl">
+    <span>Companion Painting</span><span>·</span><span>BC Licensed FM1112157</span><span>·</span>
+    <span>Fully insured</span><span>·</span><span>3-year warranty</span><span>·</span><span>Kelowna &amp; the Okanagan</span>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a href="#lead" onclick="var f=document.getElementById('name');if(f)setTimeout(function(){f.focus()},400)">Book my free estimate</a></div>
+
+<script>
+  // Placeholder submit (client-side), the Railway CAPI wiring attaches to form.form-card in the tracking step (N1).
+  document.getElementById('lead').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(this.company && this.company.value){return;}         // honeypot
+    if(!this.name.value || !this.phone.value || !this.town.value || !this.reason.value){
+      this.reportValidity && this.reportValidity(); return;
+    }
+    this.style.display='none';
+    var d=document.getElementById('done'); d.classList.add('on');
+    d.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+</script>
+</body>
+</html>
