@@ -1,9 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K82BFRDC');</script>
-<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) — Google Ads AW-18338007193 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18338007193"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','AW-18338007193');
+  /* GA4: uncomment once the Companion G- measurement ID is on file */
+  /* gtag('config','G-XXXXXXX'); */
+</script>
+<!-- Meta Pixel — Companion dataset 1364684838798115 -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1364684838798115');fbq('track','PageView');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Exterior House Painting in Kelowna &amp; the Okanagan | Companion Painting</title>
@@ -112,7 +127,7 @@
 </style>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K82BFRDC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1364684838798115&ev=PageView&noscript=1"/></noscript>
 <header>
   <a href="#top"><img class="logo" src="img/logo.png" alt="Companion Painting"></a>
   <a class="tel" href="tel:+17789465773"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 11.5a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg><span>Call </span>(778) 946 5773</a>
@@ -286,7 +301,9 @@
       gclid:getC('_gclid'),fbp:getC('_fbp'),fbc:getC('_fbc'),event_id:eid,source:'google-lp'};
     // (1) client-side signal -> GTM fires Google Ads conversion + GA4 + Meta browser Lead (event_id dedupes with server)
     window.dataLayer=window.dataLayer||[];
-    dataLayer.push({event:'lp_lead', lead:payload});
+    try{gtag('event','conversion',{send_to:'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}   // Google Ads: Website Lead (GTM retired for these owned LPs)
+    try{gtag('event','generate_lead',{value:0,currency:'CAD'});}catch(_){}                         // GA4 (no-op until G- config set in head)
+    try{fbq('track','Lead',{content_name:'Companion '+payload.page},{eventID:eid});}catch(_){}     // Meta browser Lead (dedupes w/ server CAPI via eid)
     // (2) server-side -> Railway: honeypot+phone validate -> GHL upsert + speed-to-lead -> Meta CAPI Lead (hashed) -> Google OCI
     try{fetch('https://profound-truth-production-4190.up.railway.app/webhook/companion/lp-lead',
       {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true});}catch(_){}
