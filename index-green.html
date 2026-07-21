@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Companion Painting, Premium Residential Painters in Kelowna &amp; the Okanagan</title>
+<meta name="description" content="Companion Painting, premium, stress-free residential painting across Kelowna and the Okanagan. Interior, exterior, deck and fence. Licensed, insured, 3-year warranty. Free estimates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --bg:#101a30; --navy:#132039; --panel:#182741; --panel2:#1e2f4d; --line:#2a3a58;
+    --muted:#9fb0c9; --ink:#faf8f5;
+    --brand:#23c286; --brand-2:#55e0a9; --brand-deep:#06331f; --brand-glow:rgba(35,194,134,.3);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  #prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2));box-shadow:0 0 14px var(--brand-glow)}
+
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 26px;transition:background .4s,backdrop-filter .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
+  header.solid{background:rgba(16,26,48,.9);backdrop-filter:blur(14px);border-bottom-color:var(--line);padding:11px 26px}
+  .logo{height:30px;width:auto}
+  nav.links{display:flex;align-items:center;gap:28px}
+  nav.links a{font-size:14px;font-weight:500;color:#cfd8e6;letter-spacing:.02em;transition:.2s}
+  nav.links a:hover{color:var(--brand)}
+  .call{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;
+    border:1px solid var(--brand);color:var(--brand);padding:9px 16px;border-radius:999px;background:rgba(35,194,134,.06);transition:.25s}
+  .call:hover{background:var(--brand);color:#052619}
+
+  /* HERO */
+  .hero{position:relative;height:100svh;min-height:640px;display:flex;align-items:flex-end;overflow:hidden}
+  .hero__bg{position:absolute;inset:-8% -4% -4% -4%;z-index:0;will-change:transform}
+  .hero__bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);filter:saturate(1.1) contrast(1.05) brightness(1.08)}
+  .scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+      linear-gradient(90deg, rgba(9,15,28,.72) 0%, rgba(9,15,28,.38) 30%, rgba(9,15,28,.06) 58%, rgba(9,15,28,0) 78%),
+      linear-gradient(180deg, rgba(9,15,28,.34) 0%, rgba(9,15,28,0) 24%, rgba(9,15,28,.06) 46%, rgba(9,15,28,.55) 74%, var(--bg) 100%)}
+  .vignette{position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 240px 60px rgba(0,0,0,.55)}
+  .grain{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .hero__inner{position:relative;z-index:5;width:100%}
+  .hero__pad{padding-bottom:min(9vh,88px);padding-top:120px}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:#f2e3c0;font-weight:600;margin-bottom:22px;border:1px solid rgba(35,194,134,.4);background:rgba(35,194,134,.08);padding:7px 14px;border-radius:999px}
+  .eyebrow .pip{width:6px;height:6px;border-radius:50%;background:var(--brand);box-shadow:0 0 10px var(--brand)}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(40px,7vw,84px);line-height:1;letter-spacing:-.015em;max-width:16ch;
+    text-shadow:0 2px 34px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.4)}
+  h1 .em{font-style:italic;color:var(--brand)}
+  h1 .w{display:inline-block;will-change:transform,opacity}
+  .anim #headline{opacity:0}
+  .anim h1 .w{opacity:0;transform:translateY(28px)}
+  .sub{margin-top:22px;font-size:clamp(16px,1.7vw,19px);color:#e7edf5;max-width:52ch;font-weight:400;text-shadow:0 1px 20px rgba(0,0,0,.55)}
+  .cta-row{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:16px;padding:16px 26px;border-radius:12px;
+    transition:transform .2s,box-shadow .3s,background .3s,border-color .3s}
+  .btn--primary{background:var(--brand);color:#052619;box-shadow:0 14px 40px -8px var(--brand-glow)}
+  .btn--primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -8px var(--brand-glow)}
+  .btn--ghost{border:1px solid rgba(255,255,255,.26);color:#fff;background:rgba(255,255,255,.04)}
+  .btn--ghost:hover{border-color:#fff}
+  .trust{margin-top:30px;display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.11)}
+  .trust .t{display:flex;align-items:center;gap:10px;font-size:13.5px;color:#e7edf5;font-weight:500}
+  .trust .t svg{flex:0 0 auto;color:var(--brand)}
+  .scrollcue{position:absolute;left:26px;bottom:22px;z-index:6;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  .mouse{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.4);border-radius:12px;position:relative}
+  .mouse::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:6px;border-radius:2px;background:#fff;transform:translateX(-50%);animation:wheel 1.6s infinite}
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+
+  .reveal{opacity:1}
+  .anim .reveal{opacity:0;transform:translateY(30px)}
+
+  section.band{padding:clamp(66px,10vh,120px) 0;position:relative}
+  .band--navy{background:linear-gradient(180deg,var(--bg),#0e1830)}
+  .kicker{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brand);font-weight:600;margin-bottom:16px}
+  .band h2{font-family:Fraunces,serif;font-weight:500;font-size:clamp(30px,4.6vw,52px);line-height:1.05;letter-spacing:-.015em;max-width:22ch}
+  .band h2 .em{font-style:italic;color:var(--brand)}
+  .band .lede{margin-top:18px;color:var(--muted);font-size:18px;max-width:56ch}
+  .head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+
+  /* PAIN / why call us */
+  .pains{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:940px}
+  .pain{display:flex;gap:13px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;color:#d3ddea;font-size:15.5px}
+  .pain .pi{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:rgba(35,194,134,.14);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:1px}
+  .turn{margin-top:30px;font-size:20px;color:var(--ink);max-width:62ch;font-family:Fraunces,serif;font-weight:500;line-height:1.4}
+  .turn b{color:var(--brand);font-weight:600}
+
+  /* SERVICES */
+  .svc{margin-top:50px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .card{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--panel);
+    min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;transition:transform .4s,border-color .4s}
+  .card:hover{transform:translateY(-6px);border-color:rgba(35,194,134,.55)}
+  .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s ease}
+  .card:hover img{transform:scale(1.06)}
+  .card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(12,20,38,.2) 0%,rgba(12,20,38,.4) 42%,rgba(12,20,38,.93) 100%)}
+  .card .c-body{padding:26px 26px 28px}
+  .card h3{font-family:Fraunces,serif;font-weight:600;font-size:25px;margin-bottom:9px}
+  .card p{color:#d3ddea;font-size:15px;margin-bottom:14px;max-width:44ch}
+  .card .more{font-size:13px;font-weight:600;color:var(--brand);letter-spacing:.02em;display:inline-flex;align-items:center;gap:7px}
+
+  /* WHY / DIFFERENCE */
+  .why{margin-top:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pill{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px 26px;transition:transform .4s,border-color .4s}
+  .pill:hover{transform:translateY(-6px);border-color:rgba(35,194,134,.4)}
+  .pill .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:20px;background:rgba(35,194,134,.1);border:1px solid rgba(35,194,134,.28);color:var(--brand)}
+  .pill h3{font-family:Fraunces,serif;font-weight:600;font-size:22px;margin-bottom:10px}
+  .pill p{color:var(--muted);font-size:15px}
+
+  /* PROCESS */
+  .steps{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px 24px}
+  .step{border-top:1px solid var(--line);padding-top:22px}
+  .step .n{font-family:Fraunces,serif;font-size:34px;color:var(--brand);font-weight:600;line-height:1}
+  .step h4{font-size:18px;margin:12px 0 8px;font-weight:600}
+  .step p{color:var(--muted);font-size:14.5px}
+
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+  .about .ph{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;box-shadow:0 30px 80px -30px rgba(0,0,0,.7)}
+  .about .ph img{width:100%;height:100%;object-fit:cover}
+  .about ul{list-style:none;margin-top:24px;display:grid;gap:12px}
+  .about li{display:flex;gap:12px;color:#d3ddea;font-size:15.5px}
+  .about li svg{flex:0 0 auto;color:var(--brand);margin-top:3px}
+
+  /* GALLERY */
+  .grid{margin-top:48px;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:200px;gap:14px}
+  .g{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);cursor:zoom-in;background:var(--panel)}
+  .g img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .g:hover img{transform:scale(1.07)}
+  .g::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(12,20,38,.55));opacity:0;transition:.3s}
+  .g:hover::after{opacity:1}
+  .g.big{grid-column:span 3;grid-row:span 2}
+  .g.tall{grid-column:span 2;grid-row:span 2}
+  .g.wide{grid-column:span 3}
+  .g.sq{grid-column:span 2}
+  .gtag{position:absolute;left:12px;bottom:10px;z-index:2;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#f6efdd;opacity:0;transform:translateY(6px);transition:.3s;font-weight:600}
+  .g:hover .gtag{opacity:1;transform:none}
+
+  /* SERVICE AREA */
+  .areas{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{border:1px solid var(--line);background:var(--panel);color:#d3ddea;font-size:14px;padding:9px 16px;border-radius:999px}
+  .chip.on{border-color:var(--brand);color:var(--brand)}
+
+  /* FINAL / CONTACT */
+  .final{position:relative;padding:clamp(80px,13vh,150px) 0;text-align:center;overflow:hidden;
+    background:radial-gradient(90% 120% at 50% 0%, rgba(35,194,134,.14), transparent 60%),#0e1830}
+  .final h2{font-family:Fraunces,serif;font-weight:500;font-size:clamp(32px,5.2vw,60px);line-height:1.02;letter-spacing:-.015em;max-width:20ch;margin:0 auto}
+  .final h2 .em{font-style:italic;color:var(--brand)}
+  .final .lede{color:var(--muted);font-size:18px;margin:20px auto 0;max-width:48ch}
+  .final .cta-row{justify-content:center;margin-top:34px}
+  .final .micro{margin-top:20px;color:#8fa0b8;font-size:13.5px}
+  footer{border-top:1px solid var(--line);padding:44px 0 34px;background:#0e1830}
+  .fgrid{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+  footer .logo{height:30px;margin-bottom:14px}
+  footer .fcol p,footer .fcol a{color:#8fa0b8;font-size:13.5px;line-height:1.9;display:block}
+  footer .fcol a:hover{color:var(--brand)}
+  .fbar{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);color:#728299;font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+
+  #lb{position:fixed;inset:0;z-index:200;background:rgba(6,10,20,.94);display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+  #lb.open{display:flex}
+  #lb img{max-width:92vw;max-height:88vh;border-radius:10px;box-shadow:0 30px 90px rgba(0,0,0,.7)}
+
+  .ribbon{position:fixed;bottom:0;left:0;right:0;z-index:130;font-size:12px;color:#f2e3c0;background:rgba(11,17,32,.94);
+    border-top:1px solid rgba(35,194,134,.3);backdrop-filter:blur(10px);padding:9px 16px;text-align:center}
+  .ribbon b{color:var(--brand)}
+
+  @media(max-width:900px){
+    .svc{grid-template-columns:1fr}
+    .why{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .about{grid-template-columns:1fr;gap:32px}
+    .about .ph{aspect-ratio:16/11;max-height:360px}
+    .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+    .g.big,.g.tall,.g.wide,.g.sq{grid-column:span 2;grid-row:span 1}
+    .g.big,.g.tall{grid-row:span 2}
+    nav.links{display:none}
+    .scrollcue{display:none}
+    header{padding:12px 20px}
+    header:not(.solid){background:linear-gradient(180deg,rgba(9,15,28,.75),rgba(9,15,28,0))}
+    .hero{height:auto;min-height:100svh;align-items:flex-start}
+    .hero__pad{padding-top:92px;padding-bottom:40px}
+    h1{font-size:clamp(33px,8.2vw,60px)}
+  }
+  @media(max-width:420px){ h1{font-size:31px} .eyebrow{font-size:11px;letter-spacing:.16em} }
+</style>
+</head>
+<body>
+<script>if(window.gsap)document.documentElement.className='anim';</script>
+<div id="prog"></div>
+
+<header id="top">
+  <a href="#top"><img class="logo" src="img/logo.png" alt="Companion Painting"></a>
+  <nav class="links">
+    <a href="#services">Services</a>
+    <a href="#process">Our Process</a>
+    <a href="#about">About</a>
+    <a href="#work">Our Work</a>
+    <a href="#area">Service Area</a>
+  </nav>
+  <a class="call" href="#contact">Get a Free Estimate</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg" id="heroBg"><img src="img/ext1.jpg" alt="Modern Okanagan home exterior painted by Companion Painting"></div>
+  <div class="scrim"></div><div class="vignette"></div><div class="grain"></div>
+  <div class="hero__inner"><div class="wrap hero__pad">
+    <span class="eyebrow"><span class="pip"></span> Premium Residential Painters · Kelowna &amp; the Okanagan</span>
+    <h1 id="headline">A painting experience designed <span class="em">around you</span>.</h1>
+    <p class="sub reveal" id="heroSub">Premium, stress-free residential painting across Kelowna &amp; the Okanagan. We handle the prep, the protection and every last detail, so the great paint job is simply included.</p>
+    <div class="cta-row reveal" id="heroCta">
+      <a class="btn btn--primary" href="#contact">Book your estimate
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn--ghost" href="#work">See our work</a>
+    </div>
+    <div class="trust reveal" id="heroTrust">
+      <div class="t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></svg> BC Licensed · FM1112157</div>
+      <div class="t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Fully insured, $3M liability</div>
+      <div class="t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg> Backed by a 3-year warranty</div>
+    </div>
+  </div></div>
+  <div class="scrollcue"><span class="mouse"></span> Scroll</div>
+</section>
+
+<!-- WHY HOMEOWNERS CALL US (pain → turn) -->
+<section class="band" id="why-call">
+  <div class="wrap">
+    <p class="kicker reveal">Why homeowners call us</p>
+    <h2 class="reveal">Painting your home should be the <span class="em">easiest</span> upgrade you make.</h2>
+    <p class="lede reveal">Let's be honest. Painting sounds simple, right up until you're doing it yourself or you've hired the wrong crew. Sound familiar?</p>
+    <div class="pains reveal">
+      <div class="pain"><span class="pi">?</span> You started a room and thought, "this is taking forever."</div>
+      <div class="pain"><span class="pi">?</span> You cut in a line that somehow still doesn't look straight.</div>
+      <div class="pain"><span class="pi">?</span> Painters left dust, debris and tools all over your home.</div>
+      <div class="pain"><span class="pi">?</span> You waited around for a crew that never showed, or never called.</div>
+    </div>
+    <p class="turn reveal">That is exactly what Companion was built to fix. A calm, organized crew, a clear plan, and a finish you'll be glad you didn't rush. <b>Backed by a 3-year warranty.</b></p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="band band--navy" id="services">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="kicker reveal">What we do</p>
+        <h2 class="reveal">Everything your home needs,<br>inside and out.</h2>
+      </div>
+      <p class="lede reveal" style="max-width:34ch;margin:0">One crew you can trust with the whole property, prepped properly, finished cleanly, cared for like it's our own.</p>
+    </div>
+    <div class="svc">
+      <a class="card reveal" href="#contact">
+        <img src="img/int1.jpg" alt="Interior painting by Companion Painting">
+        <div class="c-body">
+          <h3>Interior Painting</h3>
+          <p>Your home should feel calm and comfortable while it's being painted, not chaotic. We handle the prep, protection and details so you enjoy fresh walls and clean lines without the stress of doing it yourself.</p>
+          <span class="more">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="card reveal" href="#contact">
+        <img src="img/ext1.jpg" alt="Exterior painting by Companion Painting">
+        <div class="c-body">
+          <h3>Exterior Painting</h3>
+          <p>An exterior repaint should feel straightforward and well handled. We take care of the prep, protection and cleanup so your home looks refreshed and cared for, and the process feels easy from start to finish.</p>
+          <span class="more">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="card reveal" href="#contact">
+        <img src="img/svc-deck.jpg" alt="Deck staining and painting">
+        <div class="c-body">
+          <h3>Deck Painting</h3>
+          <p>Protect and refresh your deck with professional staining and painting suited to BC's interior climate, built to stand up to Okanagan summers and winters.</p>
+          <span class="more">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="card reveal" href="#contact">
+        <img src="img/svc-fence.jpg" alt="Fence painting and staining">
+        <div class="c-body">
+          <h3>Fence Painting</h3>
+          <p>Wood and metal fencing prepped, primed and finished for lasting curb appeal and weather protection around your property.</p>
+          <span class="more">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="band band--navy">
+  <div class="wrap">
+    <p class="kicker reveal">The Companion difference</p>
+    <h2 class="reveal">A great paint job doesn't just look good,<br>it feels good to <span class="em">live through</span>.</h2>
+    <div class="why">
+      <div class="pill reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>No guesswork, no surprises</h3>
+        <p>You always know what's happening and what's next. From the first conversation to the final walkthrough, everything's explained clearly.</p>
+      </div>
+      <div class="pill reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h8M8 8h8M8 16h5M4 4h16v13H7l-3 3z"/></svg></div>
+        <h3>Clear communication</h3>
+        <p>Proactive updates so you're never left wondering. You'll always know exactly who to call and where things are at.</p>
+      </div>
+      <div class="pill reveal">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 21V12h6v9"/></svg></div>
+        <h3>Your home, respected</h3>
+        <p>Clean, protected workspaces every day. Our crews treat your home with the same care they'd give their own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="band" id="process">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="kicker reveal">How we work</p>
+        <h2 class="reveal">The 6-step Companion process.</h2>
+      </div>
+      <p class="lede reveal" style="max-width:34ch;margin:0">Clear communication, thoughtful planning, and crews who respect your home, so you're never left in the dark.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h4>First conversation</h4><p>A simple conversation to understand your home and what you're hoping to accomplish. Questions answered, next steps clear, no pressure.</p></div>
+      <div class="step reveal"><div class="n">2</div><h4>Transparent quote</h4><p>A clear, easy-to-understand quote outlining the scope, timeline and pricing, laid out upfront so you can decide with confidence.</p></div>
+      <div class="step reveal"><div class="n">3</div><h4>Predictable scheduling</h4><p>We confirm your start date and share what to expect ahead of time, with reminders and updates so nothing feels last-minute.</p></div>
+      <div class="step reveal"><div class="n">4</div><h4>Project begins</h4><p>Our crews arrive prepared, protect your home, work cleanly, and communicate throughout the day.</p></div>
+      <div class="step reveal"><div class="n">5</div><h4>Final walkthrough</h4><p>We walk the finished space with you to make sure everything looks right. We're not done until you're happy.</p></div>
+      <div class="step reveal"><div class="n">6</div><h4>Warranty support</h4><p>Backed by a 3-year warranty, and we're here for a question, a touch-up, or the next project down the road.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="band band--navy" id="about">
+  <div class="wrap about">
+    <div>
+      <p class="kicker reveal">Who we are</p>
+      <h2 class="reveal">Built on care. Built on clarity. Built for homeowners who <span class="em">expect better</span>.</h2>
+      <p class="lede reveal">Companion Painting wasn't created to be the biggest, just the one people trust most. From the beginning, we've believed how a project <em>feels</em> matters just as much as how it looks. The great paint job is simply part of the experience.</p>
+      <p class="lede reveal" style="margin-top:16px">The honest bit: we're not the cheapest painters in Kelowna, and we're not trying to be. If the lowest quote is all that matters, we're probably not your crew. If you want it done right, on time, and cared for like it's our own, that's exactly what you get.</p>
+      <ul class="reveal">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Clear, proactive communication so you're never left wondering</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Clean, respectful workspaces that feel taken care of every day</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Crews who treat your home with the same care they'd give their own</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Professional results you'll enjoy living with for years</li>
+      </ul>
+    </div>
+    <div class="ph reveal"><img src="img/int1.jpg" alt="A freshly painted Okanagan home interior"></div>
+  </div>
+</section>
+
+<!-- WORK / GALLERY -->
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <p class="kicker reveal">Recent work</p>
+        <h2 class="reveal">Real jobs, across the Okanagan.</h2>
+      </div>
+      <p class="lede reveal" style="max-width:32ch;margin:0">Homes, kitchens and a few commercial spaces. Tap any photo to view it larger.</p>
+    </div>
+    <div class="grid reveal">
+      <figure class="g big"><img src="img/ext1.jpg" alt="Exterior repaint"><span class="gtag">Exterior · Kelowna</span></figure>
+      <figure class="g tall"><img src="img/int1.jpg" alt="Interior with feature wall"><span class="gtag">Interior</span></figure>
+      <figure class="g sq"><img src="img/cab1.jpg" alt="Kitchen cabinets"><span class="gtag">Kitchen</span></figure>
+      <figure class="g wide"><img src="img/com1.jpg" alt="Commercial interior fit-out"><span class="gtag">Commercial</span></figure>
+      <figure class="g sq"><img src="img/int2.jpg" alt="Interior mudroom"><span class="gtag">Interior</span></figure>
+      <figure class="g wide"><img src="img/com2.jpg" alt="Commercial interior stairwell and millwork"><span class="gtag">Commercial · Millwork</span></figure>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="band band--navy" id="area">
+  <div class="wrap">
+    <p class="kicker reveal">Where we work</p>
+    <h2 class="reveal">Proudly painting the Central Okanagan.</h2>
+    <div class="areas reveal">
+      <span class="chip on">Kelowna</span>
+      <span class="chip">West Kelowna</span>
+      <span class="chip">Lake Country</span>
+      <span class="chip">Peachland</span>
+      <span class="chip">Vernon</span>
+      <span class="chip">Winfield</span>
+      <span class="chip">Big White</span>
+      <span class="chip">…and nearby</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL / CONTACT -->
+<section class="final" id="contact">
+  <div class="wrap">
+    <p class="kicker reveal" style="text-align:center">Free estimate · No pressure</p>
+    <h2 class="reveal">The great paint job? <span class="em">That's simply included.</span></h2>
+    <p class="lede reveal">Free, no-pressure estimate, and we're not finished until you're happy. Tell us what you're thinking, we'll take a look, give you a clear written quote, and you decide on your terms.</p>
+    <div class="cta-row reveal">
+      <a class="btn btn--primary" href="tel:+17789465773">Call Taylor · (778) 946 5773</a>
+      <a class="btn btn--ghost" href="mailto:taylor@companionpainting.ca">Email us</a>
+    </div>
+    <p class="micro reveal">BC Licensed FM1112157 · Fully insured, $3M liability · 3-year warranty · Kelowna &amp; the Okanagan</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol">
+        <img class="logo" src="img/logo.png" alt="Companion Painting">
+        <p>Premium, stress-free residential<br>painting across Kelowna &amp; the Okanagan.</p>
+      </div>
+      <div class="fcol">
+        <a href="#services">Interior Painting</a>
+        <a href="#services">Exterior Painting</a>
+        <a href="#services">Deck Painting</a>
+        <a href="#services">Fence Painting</a>
+      </div>
+      <div class="fcol">
+        <a href="#process">Our Process</a>
+        <a href="#about">About Us</a>
+        <a href="#work">Our Work</a>
+      </div>
+      <div class="fcol">
+        <a href="tel:+17789465773">(778) 946 5773</a>
+        <a href="mailto:taylor@companionpainting.ca">taylor@companionpainting.ca</a>
+        <p>BC Licensed FM1112157<br>Fully insured · 3-year warranty</p>
+      </div>
+    </div>
+    <div class="wrap fbar" style="padding-left:0;padding-right:0">
+      <span>© 2026 Companion Painting</span>
+      <span>Serving Kelowna &amp; the Central Okanagan</span>
+    </div>
+  </div>
+</footer>
+
+<div id="lb"><img src="" alt=""></div>
+
+<script>
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  (function(){
+    var h=document.getElementById('headline'), nodes=Array.from(h.childNodes); h.innerHTML='';
+    nodes.forEach(function(node){
+      if(node.nodeType===3){ node.textContent.split(/(\s+)/).forEach(function(tok){
+        if(tok.trim()===''){h.appendChild(document.createTextNode(tok));return;}
+        var w=document.createElement('span'); w.className='w'; w.textContent=tok; h.appendChild(w);}); }
+      else { var w=document.createElement('span'); w.className='w '+node.className; w.textContent=node.textContent; h.appendChild(w); }
+    });
+  })();
+  function forceShow(){ document.documentElement.classList.remove('anim');
+    document.querySelectorAll('#headline,#headline .w,.reveal').forEach(function(e){e.style.opacity='';e.style.transform='';}); }
+  var safety=setTimeout(forceShow,1800);
+  try{
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.set('#headline',{opacity:1});
+    if(!reduce){
+      gsap.set(['#heroSub','#heroCta','#heroTrust'],{y:22});
+      gsap.timeline({defaults:{ease:'power3.out'},onComplete:function(){clearTimeout(safety);}})
+        .from('.eyebrow',{y:14,opacity:0,duration:.6},0)
+        .to('#headline .w',{opacity:1,y:0,duration:.85,stagger:.05,clearProps:'transform'},'-=.25')
+        .to(['#heroSub','#heroCta','#heroTrust'],{opacity:1,y:0,duration:.8,stagger:.1},'-=.5');
+    } else { forceShow(); clearTimeout(safety); }
+    if(!reduce){
+      gsap.to('#heroBg',{yPercent:16,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+      gsap.fromTo('#heroBg img',{scale:1.12},{scale:1.02,duration:6,ease:'power1.out'});
+    }
+    gsap.to('#prog',{width:'100%',ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
+    gsap.utils.toArray('.reveal').forEach(function(el){
+      if(el.closest('.hero')) return;
+      gsap.to(el,{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+    });
+  }catch(err){ forceShow(); clearTimeout(safety); }
+  var hdr=document.querySelector('header');
+  addEventListener('scroll',function(){hdr.classList.toggle('solid',scrollY>60);},{passive:true});
+  (function(){
+    var lb=document.getElementById('lb'), lbi=lb.querySelector('img');
+    document.querySelectorAll('.g img').forEach(function(im){
+      im.addEventListener('click',function(){lbi.src=im.src;lbi.alt=im.alt;lb.classList.add('open');});
+    });
+    lb.addEventListener('click',function(){lb.classList.remove('open');});
+  })();
+</script>
+</body>
+</html>
