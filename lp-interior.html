@@ -288,7 +288,7 @@
     window.dataLayer=window.dataLayer||[];
     dataLayer.push({event:'lp_lead', lead:payload});
     // (2) server-side -> Railway: honeypot+phone validate -> GHL upsert + speed-to-lead -> Meta CAPI Lead (hashed) -> Google OCI
-    try{fetch('https://profound-truth-production.up.railway.app/webhook/companion/lp-lead',
+    try{fetch('https://profound-truth-production-4190.up.railway.app/webhook/companion/lp-lead',
       {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true});}catch(_){}
     // (3) thank-you
     this.style.display='none';
