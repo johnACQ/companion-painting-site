@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Companion Painting — Premium Residential Painters in Kelowna &amp; the Okanagan</title>
-<meta name="description" content="Companion Painting — premium, stress-free residential painting across Kelowna and the Okanagan. Interior, exterior, deck and fence. Licensed, insured, 3-year warranty. Free estimates.">
+<title>Companion Painting, Premium Residential Painters in Kelowna &amp; the Okanagan</title>
+<meta name="description" content="Companion Painting, premium, stress-free residential painting across Kelowna and the Okanagan. Interior, exterior, deck and fence. Licensed, insured, 3-year warranty. Free estimates.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -87,6 +87,13 @@
   .band h2 .em{font-style:italic;color:var(--brand)}
   .band .lede{margin-top:18px;color:var(--muted);font-size:18px;max-width:56ch}
   .head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+
+  /* PAIN / why call us */
+  .pains{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:940px}
+  .pain{display:flex;gap:13px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;color:#d3ddea;font-size:15.5px}
+  .pain .pi{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:rgba(236,171,19,.14);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:1px}
+  .turn{margin-top:30px;font-size:20px;color:var(--ink);max-width:62ch;font-family:Fraunces,serif;font-weight:500;line-height:1.4}
+  .turn b{color:var(--brand);font-weight:600}
 
   /* SERVICES */
   .svc{margin-top:50px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
@@ -209,7 +216,7 @@
   <div class="hero__inner"><div class="wrap hero__pad">
     <span class="eyebrow"><span class="pip"></span> Premium Residential Painters · Kelowna &amp; the Okanagan</span>
     <h1 id="headline">A painting experience designed <span class="em">around you</span>.</h1>
-    <p class="sub reveal" id="heroSub">Premium, stress-free residential painting across Kelowna &amp; the Okanagan. We handle the prep, the protection and the details — the great paint job is simply included.</p>
+    <p class="sub reveal" id="heroSub">Premium, stress-free residential painting across Kelowna &amp; the Okanagan. We handle the prep, the protection and every last detail, so the great paint job is simply included.</p>
     <div class="cta-row reveal" id="heroCta">
       <a class="btn btn--primary" href="#contact">Book your estimate
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -217,29 +224,45 @@
     </div>
     <div class="trust reveal" id="heroTrust">
       <div class="t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></svg> BC Licensed · FM1112157</div>
-      <div class="t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Fully insured — $3M liability</div>
+      <div class="t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Fully insured, $3M liability</div>
       <div class="t"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg> Backed by a 3-year warranty</div>
     </div>
   </div></div>
   <div class="scrollcue"><span class="mouse"></span> Scroll</div>
 </section>
 
+<!-- WHY HOMEOWNERS CALL US (pain → turn) -->
+<section class="band" id="why-call">
+  <div class="wrap">
+    <p class="kicker reveal">Why homeowners call us</p>
+    <h2 class="reveal">Painting your home should be the <span class="em">easiest</span> upgrade you make.</h2>
+    <p class="lede reveal">Let's be honest. Painting sounds simple, right up until you're doing it yourself or you've hired the wrong crew. Sound familiar?</p>
+    <div class="pains reveal">
+      <div class="pain"><span class="pi">?</span> You started a room and thought, "this is taking forever."</div>
+      <div class="pain"><span class="pi">?</span> You cut in a line that somehow still doesn't look straight.</div>
+      <div class="pain"><span class="pi">?</span> Painters left dust, debris and tools all over your home.</div>
+      <div class="pain"><span class="pi">?</span> You waited around for a crew that never showed, or never called.</div>
+    </div>
+    <p class="turn reveal">That is exactly what Companion was built to fix. A calm, organized crew, a clear plan, and a finish you'll be glad you didn't rush. <b>Backed by a 3-year warranty.</b></p>
+  </div>
+</section>
+
 <!-- SERVICES -->
-<section class="band" id="services">
+<section class="band band--navy" id="services">
   <div class="wrap">
     <div class="head-row">
       <div>
         <p class="kicker reveal">What we do</p>
         <h2 class="reveal">Everything your home needs,<br>inside and out.</h2>
       </div>
-      <p class="lede reveal" style="max-width:34ch;margin:0">One crew you can trust with the whole property — prepped properly, finished cleanly, cared for like it's our own.</p>
+      <p class="lede reveal" style="max-width:34ch;margin:0">One crew you can trust with the whole property, prepped properly, finished cleanly, cared for like it's our own.</p>
     </div>
     <div class="svc">
       <a class="card reveal" href="#contact">
         <img src="img/int1.jpg" alt="Interior painting by Companion Painting">
         <div class="c-body">
           <h3>Interior Painting</h3>
-          <p>Your home should feel calm and comfortable while it's being painted — not chaotic. We handle the prep, protection and details so you enjoy fresh walls and clean lines without the stress of doing it yourself.</p>
+          <p>Your home should feel calm and comfortable while it's being painted, not chaotic. We handle the prep, protection and details so you enjoy fresh walls and clean lines without the stress of doing it yourself.</p>
           <span class="more">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
@@ -247,7 +270,7 @@
         <img src="img/ext1.jpg" alt="Exterior painting by Companion Painting">
         <div class="c-body">
           <h3>Exterior Painting</h3>
-          <p>An exterior repaint should feel straightforward and well handled. We take care of the prep, protection and cleanup so your home looks refreshed and cared for — and the process feels easy from start to finish.</p>
+          <p>An exterior repaint should feel straightforward and well handled. We take care of the prep, protection and cleanup so your home looks refreshed and cared for, and the process feels easy from start to finish.</p>
           <span class="more">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
@@ -255,7 +278,7 @@
         <img src="img/svc-deck.jpg" alt="Deck staining and painting">
         <div class="c-body">
           <h3>Deck Painting</h3>
-          <p>Protect and refresh your deck with professional staining and painting suited to BC's interior climate — built to stand up to Okanagan summers and winters.</p>
+          <p>Protect and refresh your deck with professional staining and painting suited to BC's interior climate, built to stand up to Okanagan summers and winters.</p>
           <span class="more">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
@@ -275,7 +298,7 @@
 <section class="band band--navy">
   <div class="wrap">
     <p class="kicker reveal">The Companion difference</p>
-    <h2 class="reveal">A great paint job doesn't just look good —<br>it feels good to <span class="em">live through</span>.</h2>
+    <h2 class="reveal">A great paint job doesn't just look good,<br>it feels good to <span class="em">live through</span>.</h2>
     <div class="why">
       <div class="pill reveal">
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
@@ -304,15 +327,15 @@
         <p class="kicker reveal">How we work</p>
         <h2 class="reveal">The 6-step Companion process.</h2>
       </div>
-      <p class="lede reveal" style="max-width:34ch;margin:0">Clear communication, thoughtful planning, and crews who respect your home — so you're never left in the dark.</p>
+      <p class="lede reveal" style="max-width:34ch;margin:0">Clear communication, thoughtful planning, and crews who respect your home, so you're never left in the dark.</p>
     </div>
     <div class="steps">
-      <div class="step reveal"><div class="n">1</div><h4>First conversation</h4><p>A simple conversation to understand your home and what you're hoping to accomplish. Questions answered, next steps clear — no pressure.</p></div>
-      <div class="step reveal"><div class="n">2</div><h4>Transparent quote</h4><p>A clear, easy-to-understand quote outlining the scope, timeline and pricing — laid out upfront so you can decide with confidence.</p></div>
+      <div class="step reveal"><div class="n">1</div><h4>First conversation</h4><p>A simple conversation to understand your home and what you're hoping to accomplish. Questions answered, next steps clear, no pressure.</p></div>
+      <div class="step reveal"><div class="n">2</div><h4>Transparent quote</h4><p>A clear, easy-to-understand quote outlining the scope, timeline and pricing, laid out upfront so you can decide with confidence.</p></div>
       <div class="step reveal"><div class="n">3</div><h4>Predictable scheduling</h4><p>We confirm your start date and share what to expect ahead of time, with reminders and updates so nothing feels last-minute.</p></div>
       <div class="step reveal"><div class="n">4</div><h4>Project begins</h4><p>Our crews arrive prepared, protect your home, work cleanly, and communicate throughout the day.</p></div>
       <div class="step reveal"><div class="n">5</div><h4>Final walkthrough</h4><p>We walk the finished space with you to make sure everything looks right. We're not done until you're happy.</p></div>
-      <div class="step reveal"><div class="n">6</div><h4>Warranty support</h4><p>Backed by a 3-year warranty — and we're here for a question, a touch-up, or the next project down the road.</p></div>
+      <div class="step reveal"><div class="n">6</div><h4>Warranty support</h4><p>Backed by a 3-year warranty, and we're here for a question, a touch-up, or the next project down the road.</p></div>
     </div>
   </div>
 </section>
@@ -323,7 +346,8 @@
     <div>
       <p class="kicker reveal">Who we are</p>
       <h2 class="reveal">Built on care. Built on clarity. Built for homeowners who <span class="em">expect better</span>.</h2>
-      <p class="lede reveal">Companion Painting wasn't created to be the biggest — just the one people trust most. From the beginning, we've believed how a project <em>feels</em> matters just as much as how it looks. The great paint job is simply part of the experience.</p>
+      <p class="lede reveal">Companion Painting wasn't created to be the biggest, just the one people trust most. From the beginning, we've believed how a project <em>feels</em> matters just as much as how it looks. The great paint job is simply part of the experience.</p>
+      <p class="lede reveal" style="margin-top:16px">The honest bit: we're not the cheapest painters in Kelowna, and we're not trying to be. If the lowest quote is all that matters, we're probably not your crew. If you want it done right, on time, and cared for like it's our own, that's exactly what you get.</p>
       <ul class="reveal">
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Clear, proactive communication so you're never left wondering</li>
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Clean, respectful workspaces that feel taken care of every day</li>
@@ -379,12 +403,12 @@
   <div class="wrap">
     <p class="kicker reveal" style="text-align:center">Free estimate · No pressure</p>
     <h2 class="reveal">The great paint job? <span class="em">That's simply included.</span></h2>
-    <p class="lede reveal">Tell us what you're thinking. We'll take a look, give you a clear written quote, and you decide — on your terms, no pushy follow-ups.</p>
+    <p class="lede reveal">Free, no-pressure estimate, and we're not finished until you're happy. Tell us what you're thinking, we'll take a look, give you a clear written quote, and you decide on your terms.</p>
     <div class="cta-row reveal">
       <a class="btn btn--primary" href="tel:+17789465773">Call Taylor · (778) 946 5773</a>
       <a class="btn btn--ghost" href="mailto:taylor@companionpainting.ca">Email us</a>
     </div>
-    <p class="micro reveal">BC Licensed FM1112157 · Fully insured — $3M liability · 3-year warranty · Kelowna &amp; the Okanagan</p>
+    <p class="micro reveal">BC Licensed FM1112157 · Fully insured, $3M liability · 3-year warranty · Kelowna &amp; the Okanagan</p>
   </div>
 </section>
 
@@ -421,7 +445,7 @@
 
 <div id="lb"><img src="" alt=""></div>
 
-<div class="ribbon">🎬 <b>Site v2 — matched to their brand</b> · Their logo, navy+gold palette, real services / 6-step process / About &amp; 3-yr warranty from companionpainting.ca. Hero &amp; gallery = Taylor's <b>real</b> jobs; deck/fence use their photos ’til we shoot his.</div>
+<div class="ribbon">🎬 <b>Site v2 (conversion pass) Â· their brand + Halo-gated copy (kill-list clean, 81% you-focused, pain hook + premium disqualifier). Hero &amp; gallery = Taylor's <b>real</b> jobs; deck/fence use their photos ’til we shoot his.</div>
 
 <script>
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
