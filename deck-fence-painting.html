@@ -546,7 +546,7 @@
         .from('#heroSub',{opacity:0,y:18,duration:.7},'-=.45')
         .from('#heroTrust',{opacity:0,y:18,duration:.7},'-=.5')
         .from('#estFormWrap',{opacity:0,y:24,duration:.8},'-=.6');
-      gsap.utils.toArray('#heroSub,#heroTrust').forEach(function(e){e.classList.remove('reveal');});
+      gsap.utils.toArray('.hero .reveal').forEach(function(e){e.classList.remove('reveal');});
     } else { forceShow(); clearTimeout(safety); }
     gsap.to('#prog',{width:'100%',ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
     gsap.utils.toArray('.reveal').forEach(function(el){
