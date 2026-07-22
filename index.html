@@ -70,28 +70,30 @@
   .btn--ghost:hover{border-color:var(--brand);color:var(--brand)}
   .nav-cta{padding:10px 18px;font-size:14px}
 
-  /* HERO (light, standalone house photo) */
-  .hero{position:relative;overflow:hidden;background:
-    radial-gradient(120% 90% at 82% 0%, var(--bg-3) 0%, rgba(234,240,252,0) 55%),
-    linear-gradient(180deg,#fff 0%,var(--bg-2) 100%)}
-  .hero__grid{display:grid;grid-template-columns:1.04fr .96fr;gap:52px;align-items:start;padding:128px 0 64px}
+  /* HERO (full-bleed background photo, Elkhorn-style) */
+  .hero{position:relative;overflow:hidden;isolation:isolate}
+  .hero__bg{position:absolute;inset:0;z-index:-2}
+  .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 46%;filter:saturate(1.05) contrast(1.02)}
+  .hero__scrim{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(90deg,rgba(8,13,32,.85) 0%,rgba(8,13,32,.66) 32%,rgba(8,13,32,.34) 60%,rgba(8,13,32,.12) 100%),
+    linear-gradient(180deg,rgba(8,13,32,.5) 0%,rgba(8,13,32,.08) 26%,rgba(8,13,32,.5) 100%)}
+  .hero__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center;padding:132px 0 66px}
   .hero__copy{display:flex;flex-direction:column;align-items:flex-start}
   .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--brand);font-weight:600;margin-bottom:20px;border:1px solid var(--line-2);background:#fff;padding:7px 14px;border-radius:999px}
-  .eyebrow .pip{width:7px;height:7px;border-radius:50%;background:var(--brand)}
-  h1{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(38px,5.2vw,60px);line-height:1.03;letter-spacing:-.02em;max-width:15ch;color:var(--ink)}
-  h1 .em{font-style:italic;color:var(--brand)}
+    color:#e7ecff;font-weight:600;margin-bottom:20px;border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.1);padding:7px 14px;border-radius:999px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .eyebrow .pip{width:7px;height:7px;border-radius:50%;background:#7c9bff;box-shadow:0 0 8px #7c9bff}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(38px,5.6vw,66px);line-height:1.03;letter-spacing:-.02em;max-width:15ch;color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+  h1 .em{font-style:italic;color:#8ea6ff}
   h1 .w{display:inline-block;will-change:transform,opacity}
   .anim #headline{opacity:0}
   .anim h1 .w{opacity:0;transform:translateY(24px)}
-  .sub{margin-top:18px;font-size:clamp(16px,1.5vw,18px);color:var(--ink-soft);max-width:48ch;font-weight:400}
-  .sub b{color:var(--ink);font-weight:600}
-  .hero-photo-m{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 46%;
-    border-radius:16px;margin:26px 0 2px;border:1px solid var(--line);box-shadow:var(--shadow)}
-  .hero-trust{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 12px}
-  .hero-trust .t{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink-soft);
-    background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px}
-  .hero-trust .t svg{color:var(--brand);flex:0 0 auto}
+  .sub{margin-top:20px;font-size:clamp(16px,1.5vw,18.5px);color:#e9edfb;max-width:46ch;font-weight:400;text-shadow:0 1px 16px rgba(0,0,0,.4)}
+  .sub b{color:#fff;font-weight:600}
+  .hero-photo-m{display:none}
+  .hero-trust{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 12px}
+  .hero-trust .t{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#eaf0ff;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 14px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .hero-trust .t svg{color:#8ea6ff;flex:0 0 auto}
 
   /* FORM CARD */
   .formcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 26px 24px;box-shadow:var(--shadow);position:relative}
@@ -237,8 +239,10 @@
   .mcta{display:none}
 
   @media(max-width:940px){
-    .hero__grid{grid-template-columns:1fr;gap:24px;padding:110px 0 48px}
-    .hero-photo-m{aspect-ratio:16/10;object-position:center 44%;margin:22px 0 2px}
+    .hero__grid{grid-template-columns:1fr;gap:22px;padding:112px 0 46px}
+    .hero__bg img{object-position:58% 56%;filter:saturate(1.05) contrast(1.02) brightness(.84)}
+    .hero__scrim{background:
+      linear-gradient(180deg,rgba(8,13,32,.6) 0%,rgba(8,13,32,.46) 42%,rgba(8,13,32,.72) 100%)}
     .about{grid-template-columns:1fr;gap:30px}
     .about .ph{aspect-ratio:16/11;max-height:360px;order:-1}
     .final .fin-grid{grid-template-columns:1fr;gap:34px}
@@ -286,6 +290,8 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero__bg"><img src="img/ext1.jpg" alt="Modern Okanagan home exterior painted by Companion Painting"></div>
+  <div class="hero__scrim"></div>
   <div class="wrap hero__grid">
     <div class="hero__copy">
       <span class="eyebrow"><span class="pip"></span> Kelowna &amp; the Okanagan · Interior &amp; Exterior</span>
