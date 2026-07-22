@@ -92,6 +92,7 @@
   .hero-trust .t{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#eaf0ff;
     background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 14px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
   .hero-trust .t svg{color:#8ea6ff;flex:0 0 auto}
+  .hero-photo-m{display:none}
 
   /* FORM CARD */
   .formcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 26px 24px;box-shadow:var(--shadow);position:relative}
@@ -237,10 +238,20 @@
   .mcta{display:none}
 
   @media(max-width:940px){
-    .hero__grid{grid-template-columns:1fr;gap:30px;padding:118px 0 52px}
-    .hero__bg img{object-position:64% 64%}
-    .hero__scrim{background:
-      linear-gradient(180deg,rgba(8,13,32,.62) 0%,rgba(8,13,32,.32) 40%,rgba(8,13,32,.55) 100%)}
+    /* Mobile hero = light bg, dark text, whole-house photo in a contained card */
+    .hero{background:linear-gradient(180deg,#fff 0%,var(--bg-2) 100%)}
+    .hero__bg,.hero__scrim{display:none}
+    .hero__grid{grid-template-columns:1fr;gap:24px;padding:110px 0 48px}
+    .hero-photo-m{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 44%;
+      border-radius:16px;margin:22px 0 2px;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .eyebrow{color:var(--brand);border-color:var(--line-2);background:#fff}
+    .eyebrow .pip{background:var(--brand);box-shadow:none}
+    h1{color:var(--ink);text-shadow:none}
+    h1 .em{color:var(--brand)}
+    .sub{color:var(--ink-soft);text-shadow:none}
+    .sub b{color:var(--ink)}
+    .hero-trust .t{color:var(--ink-soft);background:#fff;border-color:var(--line)}
+    .hero-trust .t svg{color:var(--brand)}
     .about{grid-template-columns:1fr;gap:30px}
     .about .ph{aspect-ratio:16/11;max-height:360px;order:-1}
     .final .fin-grid{grid-template-columns:1fr;gap:34px}
@@ -295,6 +306,7 @@
       <span class="eyebrow"><span class="pip"></span> Kelowna &amp; the Okanagan · Interior &amp; Exterior</span>
       <h1 id="headline">Your <span class="em">easy button</span> for a beautifully painted home.</h1>
       <p class="sub reveal" id="heroSub">Hiring a painter shouldn't feel like a second job. We call you back, show up when we say, protect your home, and leave you with a finish you'll be glad you didn't rush. <b>The great paint job is simply included.</b></p>
+      <img class="hero-photo-m" src="img/ext1.jpg" alt="A modern Okanagan home painted by Companion Painting">
       <div class="hero-trust reveal" id="heroTrust">
         <span class="t"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></svg> BC Licensed</span>
         <span class="t"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> $3M Insured</span>
