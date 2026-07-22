@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deck &amp; Fence Painting &amp; Staining in Kelowna | Companion Painting</title>
+<meta name="description" content="Deck and fence painting and staining in Kelowna and the Okanagan. Cleaned, prepped and finished for the BC interior climate, backed by a 3-year warranty. Free estimate.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18338007193"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18338007193');
+  /* gtag('config', 'G-XXXXXXX'); // uncomment once GA4 measurement ID is set */
+</script>
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1364684838798115');fbq('track','PageView');
+</script>
+
+<style>
+  :root{
+    --bg:#ffffff; --bg-2:#f3f6fd; --bg-3:#eaf0fc; --card:#ffffff;
+    --ink:#0e1b36; --ink-soft:#33415c; --muted:#5c6b85;
+    --brand:#070ccb; --brand-2:#2f4bff; --brand-deep:#050892; --brand-tint:#eef1ff;
+    --line:#e3e9f5; --line-2:#d6def0;
+    --maxw:1180px; --shadow:0 24px 60px -24px rgba(14,27,54,.22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--brand);color:#fff}
+
+  #prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:15px 26px;transition:background .35s,box-shadow .35s,padding .35s;background:rgba(255,255,255,.86);backdrop-filter:blur(12px)}
+  header.solid{background:rgba(255,255,255,.96);box-shadow:0 6px 24px -14px rgba(14,27,54,.28);padding:10px 26px}
+  .logo{height:34px;width:auto}
+  nav.links{display:flex;align-items:center;gap:26px}
+  nav.links a{font-size:14px;font-weight:500;color:var(--ink-soft);letter-spacing:.01em;transition:.2s}
+  nav.links a:hover{color:var(--brand)}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .phone{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;color:var(--ink)}
+  .phone svg{color:var(--brand)}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;padding:12px 20px;border-radius:11px;
+    transition:transform .2s,box-shadow .3s,background .3s,border-color .3s;cursor:pointer;border:0;font-family:inherit}
+  .btn--primary{background:var(--brand);color:#fff;box-shadow:0 12px 30px -10px rgba(7,12,203,.5)}
+  .btn--primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -10px rgba(7,12,203,.55)}
+  .btn--ghost{border:1.5px solid var(--line-2);color:var(--ink);background:#fff}
+  .btn--ghost:hover{border-color:var(--brand);color:var(--brand)}
+  .nav-cta{padding:10px 18px;font-size:14px}
+
+  /* SERVICES DROPDOWN (desktop) */
+  nav.links .navitem{position:relative;display:flex;align-items:center}
+  .drop-toggle{display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-size:14px;font-weight:500;color:var(--ink-soft)}
+  .drop-toggle:hover{color:var(--brand)}
+  .drop-toggle svg{transition:transform .25s}
+  .navitem:hover .drop-toggle svg{transform:rotate(180deg)}
+  .drop{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:238px;
+    background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px;
+    opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;z-index:60;margin-top:8px}
+  .drop::before{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}
+  .navitem:hover .drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .drop a{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:9px;font-size:14px;font-weight:500;color:var(--ink);transition:.15s}
+  .drop a:hover{background:var(--brand-tint);color:var(--brand)}
+  .drop a svg{color:var(--brand);flex:0 0 auto}
+
+  /* HAMBURGER + MOBILE MENU */
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:9px 6px}
+  .burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
+  .mm-backdrop{position:fixed;inset:0;background:rgba(8,13,32,.42);z-index:125;opacity:0;visibility:hidden;transition:.3s}
+  .mm-backdrop.open{opacity:1;visibility:visible}
+  .mobile-menu{position:fixed;top:0;right:0;bottom:0;width:min(85vw,340px);background:#fff;z-index:130;
+    transform:translateX(100%);transition:transform .3s ease;box-shadow:-20px 0 60px -20px rgba(14,27,54,.4);
+    padding:74px 22px 28px;display:flex;flex-direction:column;gap:2px;overflow-y:auto}
+  .mobile-menu.open{transform:translateX(0)}
+  .mobile-menu a{padding:14px 6px;font-size:16px;font-weight:500;color:var(--ink);border-bottom:1px solid var(--line)}
+  .mobile-menu .mm-head{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);font-weight:700;margin:10px 6px 2px}
+  .mobile-menu .mm-sub a{display:block;font-size:14.5px;color:var(--ink-soft);padding:11px 6px 11px 18px;border-bottom:0}
+  .mobile-menu .mm-cta{margin-top:16px;border-bottom:0;color:#fff!important;background:var(--brand);text-align:center;border-radius:11px;font-weight:700}
+  .mm-close{position:absolute;top:18px;right:18px;background:none;border:0;font-size:30px;line-height:1;cursor:pointer;color:var(--ink)}
+
+  /* HERO (full-bleed background photo, Elkhorn-style) */
+  .hero{position:relative;overflow:hidden;isolation:isolate}
+  .hero__bg{position:absolute;inset:0;z-index:-2}
+  .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 46%;filter:saturate(1.05) contrast(1.02)}
+  .hero__scrim{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(90deg,rgba(8,13,32,.85) 0%,rgba(8,13,32,.66) 32%,rgba(8,13,32,.34) 60%,rgba(8,13,32,.12) 100%),
+    linear-gradient(180deg,rgba(8,13,32,.5) 0%,rgba(8,13,32,.08) 26%,rgba(8,13,32,.5) 100%)}
+  .hero__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center;padding:132px 0 66px}
+  .hero__copy{display:flex;flex-direction:column;align-items:flex-start}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:#e7ecff;font-weight:600;margin-bottom:20px;border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.1);padding:7px 14px;border-radius:999px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .eyebrow .pip{width:7px;height:7px;border-radius:50%;background:#7c9bff;box-shadow:0 0 8px #7c9bff}
+  h1{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(38px,5.6vw,66px);line-height:1.03;letter-spacing:-.02em;max-width:15ch;color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+  h1 .em{font-style:italic;color:#8ea6ff}
+  h1 .w{display:inline-block;will-change:transform,opacity}
+  .anim #headline{opacity:0}
+  .anim h1 .w{opacity:0;transform:translateY(24px)}
+  .sub{margin-top:20px;font-size:clamp(16px,1.5vw,18.5px);color:#e9edfb;max-width:46ch;font-weight:400;text-shadow:0 1px 16px rgba(0,0,0,.4)}
+  .sub b{color:#fff;font-weight:600}
+  .hero-photo-m{display:none}
+  .hero-trust{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 12px}
+  .hero-trust .t{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#eaf0ff;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 14px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .hero-trust .t svg{color:#8ea6ff;flex:0 0 auto}
+
+  /* FORM CARD */
+  .formcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 26px 24px;box-shadow:var(--shadow);position:relative}
+  .formcard::before{content:"";position:absolute;inset:0;border-radius:20px;padding:1px;pointer-events:none;
+    background:linear-gradient(180deg,rgba(47,75,255,.35),rgba(47,75,255,0) 40%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .formcard h3{font-family:Fraunces,serif;font-weight:600;font-size:23px;color:var(--ink);margin-bottom:4px}
+  .formcard .fc-sub{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
+  .field input,.field select{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:#fff;
+    border:1.5px solid var(--line-2);border-radius:11px;padding:13px 14px;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+  .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%235c6b85' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px var(--brand-tint)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .formcard .btn{width:100%;justify-content:center;margin-top:6px;font-size:16px;padding:15px}
+  .formcard .micro{margin-top:12px;font-size:12px;color:var(--muted);text-align:center;line-height:1.5}
+  .fc-ok{display:none;text-align:center;padding:20px 6px}
+  .fc-ok .ok-ic{width:56px;height:56px;border-radius:50%;background:var(--brand-tint);color:var(--brand);display:grid;place-items:center;margin:0 auto 14px}
+  .fc-ok h3{font-family:Fraunces,serif;font-size:22px;margin-bottom:6px}
+  .fc-ok p{color:var(--muted);font-size:14.5px}
+
+  /* REVIEW STRIP */
+  .revbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+  .revbar .wrap{display:flex;flex-wrap:wrap;gap:14px 40px;align-items:center;justify-content:center;padding-top:20px;padding-bottom:20px}
+  .revbar .r{display:flex;align-items:center;gap:11px;color:var(--ink-soft);font-size:14px;font-weight:500}
+  .revbar .r b{color:var(--ink);font-weight:700}
+  .revbar .r .ic{width:36px;height:36px;border-radius:9px;background:var(--brand-tint);color:var(--brand);display:grid;place-items:center;flex:0 0 auto}
+
+  section.band{padding:clamp(60px,9vh,104px) 0;position:relative}
+  .band--tint{background:var(--bg-2)}
+  .kicker{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);font-weight:600;margin-bottom:14px}
+  .band h2{font-family:Fraunces,serif;font-weight:500;font-size:clamp(28px,4.2vw,48px);line-height:1.06;letter-spacing:-.015em;max-width:22ch;color:var(--ink)}
+  .band h2 .em{font-style:italic;color:var(--brand)}
+  .band .lede{margin-top:16px;color:var(--muted);font-size:17.5px;max-width:56ch}
+  .head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+
+  .reveal{opacity:1}
+  .anim .reveal{opacity:0;transform:translateY(26px)}
+
+  /* PAIN → ANTIDOTE */
+  .pains{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:13px;max-width:920px}
+  .pain{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px 18px;color:var(--ink-soft);font-size:15px}
+  .pain .pi{flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:var(--brand-tint);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:15px;line-height:1;margin-top:1px}
+  .turn{margin-top:28px;font-size:20px;color:var(--ink);max-width:64ch;font-family:Fraunces,serif;font-weight:500;line-height:1.42}
+  .turn b{color:var(--brand);font-weight:600;font-style:italic}
+
+  /* SERVICES */
+  .svc{margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .card{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;
+    min-height:330px;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;transition:transform .4s,box-shadow .4s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s ease}
+  .card:hover img{transform:scale(1.06)}
+  .card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,17,38,.06) 0%,rgba(10,17,38,.42) 48%,rgba(8,12,60,.9) 100%)}
+  .card .c-body{padding:24px 25px 26px;color:#fff}
+  .card h3{font-family:Fraunces,serif;font-weight:600;font-size:24px;margin-bottom:8px}
+  .card p{color:#dfe6f5;font-size:14.5px;margin-bottom:13px;max-width:44ch}
+  .card .more{font-size:13px;font-weight:600;color:#fff;letter-spacing:.02em;display:inline-flex;align-items:center;gap:7px}
+  .card .more svg{transition:transform .25s}
+  .card:hover .more svg{transform:translateX(4px)}
+
+  /* WHY / difference */
+  .why{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 26px;transition:transform .4s,box-shadow .4s}
+  .pill:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .pill .ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;background:var(--brand-tint);color:var(--brand)}
+  .pill h3{font-family:Fraunces,serif;font-weight:600;font-size:21px;margin-bottom:9px;color:var(--ink)}
+  .pill p{color:var(--muted);font-size:15px}
+
+  /* PROCESS */
+  .steps{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px 24px}
+  .step{border-top:2px solid var(--line);padding-top:20px;position:relative}
+  .step .n{font-family:Fraunces,serif;font-size:32px;color:var(--brand);font-weight:600;line-height:1}
+  .step h4{font-size:17.5px;margin:11px 0 7px;font-weight:600;color:var(--ink)}
+  .step p{color:var(--muted);font-size:14.5px}
+  .step.warr{border-top-color:var(--brand)}
+  .step.warr .badge{display:inline-block;margin-top:10px;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--brand);background:var(--brand-tint);padding:5px 11px;border-radius:999px}
+
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:.95fr 1.05fr;gap:50px;align-items:center}
+  .about .ph{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;box-shadow:var(--shadow)}
+  .about .ph img{width:100%;height:100%;object-fit:cover}
+  .about ul{list-style:none;margin-top:22px;display:grid;gap:11px}
+  .about li{display:flex;gap:11px;color:var(--ink-soft);font-size:15.5px}
+  .about li svg{flex:0 0 auto;color:var(--brand);margin-top:3px}
+
+  /* GALLERY */
+  .grid{margin-top:44px;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:196px;gap:13px}
+  .g{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);cursor:zoom-in;background:#fff}
+  .g img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .g:hover img{transform:scale(1.07)}
+  .g::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,12,60,.6));opacity:0;transition:.3s}
+  .g:hover::after{opacity:1}
+  .g.big{grid-column:span 3;grid-row:span 2}
+  .g.tall{grid-column:span 2;grid-row:span 2}
+  .g.wide{grid-column:span 3}
+  .g.sq{grid-column:span 2}
+  .gtag{position:absolute;left:12px;bottom:10px;z-index:2;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:0;transform:translateY(6px);transition:.3s;font-weight:600}
+  .g:hover .gtag{opacity:1;transform:none}
+
+  /* SERVICE AREA */
+  .areas{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{border:1px solid var(--line-2);background:#fff;color:var(--ink-soft);font-size:14px;padding:9px 16px;border-radius:999px}
+  .chip.on{border-color:var(--brand);color:var(--brand);background:var(--brand-tint)}
+
+  /* FAQ */
+  .faq{margin-top:40px;max-width:820px}
+  .qa{border-bottom:1px solid var(--line)}
+  .qa button{width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:inherit;
+    display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 2px;color:var(--ink);font-size:17.5px;font-weight:600}
+  .qa .ai{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--brand-tint);color:var(--brand);display:grid;place-items:center;transition:transform .3s}
+  .qa.open .ai{transform:rotate(45deg)}
+  .qa .a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .qa .a p{padding:0 2px 22px;color:var(--muted);font-size:15.5px;max-width:70ch}
+
+  /* FINAL / CONTACT */
+  .final{position:relative;padding:clamp(70px,11vh,130px) 0;overflow:hidden;
+    background:linear-gradient(160deg,#0a1250 0%,#070ccb 130%);color:#fff}
+  .final::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+    background:radial-gradient(60% 80% at 85% 10%,rgba(120,140,255,.35),transparent 60%)}
+  .final .fin-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+  .final h2{font-family:Fraunces,serif;font-weight:500;font-size:clamp(30px,4.6vw,52px);line-height:1.04;letter-spacing:-.015em;max-width:16ch}
+  .final h2 .em{font-style:italic;color:#bcc7ff}
+  .final .lede{color:#cdd6f7;font-size:18px;margin:18px 0 0;max-width:44ch}
+  .final .finlist{list-style:none;margin-top:24px;display:grid;gap:11px}
+  .final .finlist li{display:flex;gap:11px;align-items:center;color:#e6ebff;font-size:15.5px}
+  .final .finlist svg{flex:0 0 auto;color:#8ea0ff}
+  .final .formcard{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);padding:44px 0 34px;background:#fff}
+  .fgrid{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+  footer .logo{height:34px;margin-bottom:14px}
+  footer .fcol p,footer .fcol a{color:var(--muted);font-size:13.5px;line-height:1.9;display:block}
+  footer .fcol a:hover{color:var(--brand)}
+  footer .fcol h5{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;font-weight:700}
+  .fbar{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);color:#8593ab;font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+
+  #lb{position:fixed;inset:0;z-index:200;background:rgba(6,10,28,.92);display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+  #lb.open{display:flex}
+  #lb img{max-width:92vw;max-height:88vh;border-radius:10px;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+
+  /* sticky mobile CTA */
+  .mcta{display:none}
+
+  @media(max-width:940px){
+    .hero__grid{grid-template-columns:1fr;gap:22px;padding:112px 0 46px}
+    .hero__bg img{object-position:58% 56%;filter:saturate(1.05) contrast(1.02) brightness(.84)}
+    .hero__scrim{background:
+      linear-gradient(180deg,rgba(8,13,32,.6) 0%,rgba(8,13,32,.46) 42%,rgba(8,13,32,.72) 100%)}
+    .about{grid-template-columns:1fr;gap:30px}
+    .about .ph{aspect-ratio:16/11;max-height:360px;order:-1}
+    .final .fin-grid{grid-template-columns:1fr;gap:34px}
+    .why{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .svc{grid-template-columns:1fr}
+  }
+  @media(max-width:760px){
+    nav.links{display:none}
+    .nav-right .phone{display:none}
+    .nav-right .nav-cta{display:none}
+    .burger{display:flex}
+    .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+    .g.big,.g.tall,.g.wide,.g.sq{grid-column:span 2;grid-row:span 1}
+    .g.big,.g.tall{grid-row:span 2}
+    .pains{grid-template-columns:1fr}
+    .revbar .wrap{gap:12px 22px}
+    header{padding:11px 18px}
+    .hero__grid{padding:104px 0 44px}
+    body{padding-bottom:70px}
+    .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:110;gap:10px;padding:10px 14px;
+      background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+    .mcta a{flex:1;justify-content:center;text-align:center}
+  }
+  @media(max-width:430px){ h1{font-size:33px} }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+  .crumb{position:relative;z-index:5;font-size:12.5px;color:#dfe6ff;opacity:.85;margin-bottom:14px}
+  .crumb a{color:#dfe6ff}.crumb a:hover{color:#fff}
+  .incl{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:900px){.incl{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<script>if(window.gsap)document.documentElement.className='anim';</script>
+<div id="prog"></div>
+
+<header id="top">
+  <a href="index.html" aria-label="Companion Painting home"><img class="logo" src="img/logo-dark.png" alt="Companion Painting"></a>
+  <nav class="links">
+    <div class="navitem">
+      <a href="#" class="drop-toggle">Services
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></a>
+      <div class="drop">
+        <a href="interior-painting.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> Interior Painting</a>
+        <a href="exterior-painting.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V7l6-4 6 4v14"/></svg> Exterior Painting</a>
+        <a href="deck-fence-painting.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V8m4 13V8m4 13V8m4 13V8m4 13V8M2 8l10-5 10 5"/></svg> Deck &amp; Fence Painting</a>
+        <a href="cabinet-painting.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M9 7h.01M15 7h.01"/></svg> Cabinet Painting</a>
+      </div>
+    </div>
+    <a href="index.html#process">Our Process</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#work">Our Work</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="nav-right">
+    <a class="phone" href="tel:+17789465773"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.5-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg> (778) 946 5773</a>
+    <a class="btn btn--primary nav-cta" href="#contact">Free Estimate</a>
+    <button class="burger" aria-label="Open menu" onclick="toggleMenu(true)"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mm-backdrop" id="mmBackdrop" onclick="toggleMenu(false)"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menu">
+  <button class="mm-close" aria-label="Close menu" onclick="toggleMenu(false)">&times;</button>
+  <div class="mm-head">Services</div>
+  <div class="mm-sub">
+    <a href="interior-painting.html">Interior Painting</a>
+    <a href="exterior-painting.html">Exterior Painting</a>
+    <a href="deck-fence-painting.html">Deck &amp; Fence Painting</a>
+    <a href="cabinet-painting.html">Cabinet Painting</a>
+  </div>
+  <a href="index.html#process">Our Process</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#work">Our Work</a>
+  <a href="#faq" onclick="toggleMenu(false)">FAQ</a>
+  <a class="mm-cta" href="#contact" onclick="toggleMenu(false)">Get a Free Estimate</a>
+</nav>
+
+<section class="hero">
+  <div class="hero__bg"><img src="img/svc-deck.jpg" alt="Okanagan summers and snow are hard on wood. We clean, prep a"></div>
+  <div class="hero__scrim"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Deck &amp; Fence Painting</p>
+      <span class="eyebrow"><span class="pip"></span> Deck &amp; Fence · Kelowna &amp; the Okanagan</span>
+      <h1 id="headline">Decks and fences, <span class="em">weather-ready</span>.</h1>
+      <p class="sub reveal" id="heroSub">Okanagan summers and snow are hard on wood. We clean, prep and finish your deck and fence so they shrug off the seasons and keep looking great. <b>Backed by a 3-year warranty.</b></p>
+      <div class="hero-trust reveal" id="heroTrust">
+        <span class="t"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></svg> BC Licensed</span>
+        <span class="t"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> $3M Insured</span>
+        <span class="t"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg> 3-Year Warranty</span>
+      </div>
+    </div>
+    <div class="formcard reveal" id="estFormWrap">
+      <form id="estForm" novalidate>
+        <div class="fc-live">
+          <h3>Get your free estimate</h3>
+          <p class="fc-sub">Tell us about your project. We will send a clear, written quote. No pressure.</p>
+          <input type="text" class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="field"><label>Your name</label><input name="name" type="text" autocomplete="name" required placeholder="First and last name"></div>
+          <div class="field"><label>Phone</label><input name="phone" type="tel" autocomplete="tel" required placeholder="(778) 000 0000"></div>
+          <div class="field"><label>Your town</label><input name="town" type="text" required placeholder="Kelowna, West Kelowna, Lake Country…"></div>
+          <div class="field"><label>What are you looking to do?</label>
+            <select name="reason" required><option value="" disabled selected>Choose one</option><option>Deck staining or painting</option><option>Fence painting or staining</option><option>Both deck &amp; fence</option><option>Refinish weathered wood</option><option>Not sure yet</option></select></div>
+          <button class="btn btn--primary" type="submit">Get my free estimate
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="micro">We reply fast, usually the same day. Your details stay private, we never share them.</p>
+        </div>
+        <div class="fc-ok" id="fcOk">
+          <div class="ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Got it, thank you.</h3><p>Taylor will be in touch shortly to set up your free estimate.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<div class="revbar"><div class="wrap">
+  <div class="r"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V5z"/></svg></span> <b>BC Licensed</b> · FM1112157</div>
+  <div class="r"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span> Fully insured, <b>$3M liability</b></div>
+  <div class="r"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg></span> <b>3-year</b> workmanship warranty</div>
+  <div class="r"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg></span> Serving the <b>Central Okanagan</b></div>
+</div></div>
+<section class="band" id="why">
+  <div class="wrap">
+    <p class="kicker reveal">Why homeowners call us</p>
+    <h2 class="reveal">Protect the wood before the <span class="em">weather wins</span>.</h2>
+    <p class="lede reveal">Left too long, a deck or fence greys, splinters and rots, and then it is a replacement, not a refresh. Catch it early and it lasts for years.</p>
+    <div class="pains reveal"><div class="pain"><span class="pi">!</span> A deck that went grey and rough underfoot.</div><div class="pain"><span class="pi">!</span> Stain that peeled or blotched after one season.</div><div class="pain"><span class="pi">!</span> A fence that is starting to split and lean.</div><div class="pain"><span class="pi">!</span> A quote for a full replacement when a refinish would do.</div></div>
+    <p class="turn reveal">We bring it back to life. Proper cleaning and prep, the right stain or paint for the exposure, and a finish built for BC's interior climate. <b>Warrantied for three years.</b></p>
+  </div>
+</section>
+<section class="band band--tint" id="included">
+  <div class="wrap">
+    <p class="kicker reveal">What is included</p>
+    <h2 class="reveal">Cleaned, prepped, and built to last.</h2>
+    <div class="incl"><div class="pill reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div><h3>Clean and sand</h3><p>We strip back the grey, wash off the grime, and sand it smooth so the finish actually grips the wood.</p></div><div class="pill reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M12 15v6M5 12H2M22 12h-3"/></svg></div><h3>The right finish</h3><p>Stain or paint chosen for sun and snow exposure, so it holds up instead of peeling off next summer.</p></div><div class="pill reveal"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div><h3>Tidy and protected</h3><p>Plants, siding and hardware protected, tidied up each day, and left ready to enjoy.</p></div></div>
+  </div>
+</section>
+<section class="band" id="process">
+  <div class="wrap">
+    <div class="head-row">
+      <div><p class="kicker reveal">How it works</p><h2 class="reveal">Six simple steps,<br>zero headaches.</h2></div>
+      <p class="lede reveal" style="max-width:34ch;margin:0">Clear communication and thoughtful planning, so you are never left in the dark.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h4>First conversation</h4><p>A simple chat about the project, the finish you want, and timing. Questions answered, no pressure.</p></div>
+      <div class="step reveal"><div class="n">2</div><h4>Transparent quote</h4><p>A clear written quote covering scope, timeline and price, laid out upfront.</p></div>
+      <div class="step reveal"><div class="n">3</div><h4>Predictable scheduling</h4><p>We lock in your start date and tell you what to expect, so nothing feels last minute.</p></div>
+      <div class="step reveal"><div class="n">4</div><h4>We work, you relax</h4><p>Site protected, careful prep, tidy each day, and we keep you posted as we go.</p></div>
+      <div class="step reveal"><div class="n">5</div><h4>Final walkthrough</h4><p>We walk the finished work with you to make sure everything is right.</p></div>
+      <div class="step reveal warr"><div class="n">6</div><h4>Warranty support</h4><p>We stand behind the work long after we pack up.</p><span class="badge">3-YEAR WARRANTY</span></div>
+    </div>
+  </div>
+</section>
+<section class="band band--tint" id="work">
+  <div class="wrap">
+    <div class="head-row"><div><p class="kicker reveal">Recent work</p><h2 class="reveal">Real jobs, across the Okanagan.</h2></div>
+    <p class="lede reveal" style="max-width:32ch;margin:0">Tap any photo to view it larger.</p></div>
+    <div class="grid reveal"><figure class="g g big"><img src="img/svc-deck.jpg" alt="Deck staining in the Okanagan"><span class="gtag">Deck · Staining</span></figure><figure class="g g tall"><img src="img/svc-fence.jpg" alt="Fence painting and staining"><span class="gtag">Fence</span></figure><figure class="g g sq"><img src="img/ext1.jpg" alt="Exterior and trim"><span class="gtag">Exterior</span></figure><figure class="g g wide"><img src="img/com2.jpg" alt="Exterior woodwork detail"><span class="gtag">Woodwork · Detail</span></figure></div>
+  </div>
+</section>
+<section class="band" id="faq">
+  <div class="wrap">
+    <p class="kicker reveal">Good questions</p>
+    <h2 class="reveal">Answered before you ask.</h2>
+    <div class="faq reveal"><div class="qa"><button aria-expanded="false"><span>Should I stain or paint my deck?</span><span class="ai"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><p>It depends on the wood, the exposure and the look you want. We will talk it through on the estimate and recommend what will last longest for your setup.</p></div></div><div class="qa"><button aria-expanded="false"><span>Can you save a weathered deck?</span><span class="ai"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><p>Often, yes. If the wood is sound we can clean, sand and refinish it and bring it right back. If it is too far gone we will tell you honestly.</p></div></div><div class="qa"><button aria-expanded="false"><span>Do you do fences too?</span><span class="ai"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><p>Yes, wood and metal. Deck, fence, or both. Pick it on the form and we will scope it in the quote.</p></div></div><div class="qa"><button aria-expanded="false"><span>When is the best time?</span><span class="ai"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><p>Wood needs dry, mild conditions to take a finish properly. We plan around the weather so it cures right, rather than rushing it.</p></div></div><div class="qa"><button aria-expanded="false"><span>Are you licensed and insured?</span><span class="ai"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><p>Yes, fully. BC licensed (FM1112157), $3M liability insurance, and every job is backed by a 3-year warranty.</p></div></div></div>
+  </div>
+</section>
+<section class="final" id="contact">
+  <div class="wrap fin-grid">
+    <div>
+      <p class="kicker reveal" style="color:#8ea0ff">Free estimate · No pressure</p>
+      <h2 class="reveal">Give your deck a <span class="em">second life</span>.</h2>
+      <p class="lede reveal">Tell us about your deck or fence. We will take a look, send a clear written quote, and you decide on your terms. We are not finished until you are happy.</p>
+      <ul class="finlist reveal">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Fast reply, usually the same day</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> Clear written quote, no surprises</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg> BC licensed, $3M insured, 3-year warranty</li>
+      </ul>
+      <p class="lede reveal" style="margin-top:22px;font-size:16px">Prefer to talk? Call Taylor at <a href="tel:+17789465773" style="color:#fff;font-weight:600">(778) 946 5773</a></p>
+    </div>
+    <div class="formcard reveal" id="estForm2Wrap">
+      <form id="estForm2" novalidate>
+        <div class="fc-live">
+          <h3>Get your free estimate</h3>
+          <p class="fc-sub">Two minutes now saves you the run-around later.</p>
+          <input type="text" class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="field"><label>Your name</label><input name="name" type="text" autocomplete="name" required placeholder="First and last name"></div>
+          <div class="field"><label>Phone</label><input name="phone" type="tel" autocomplete="tel" required placeholder="(778) 000 0000"></div>
+          <div class="field"><label>Your town</label><input name="town" type="text" required placeholder="Kelowna, West Kelowna, Lake Country…"></div>
+          <div class="field"><label>What are you looking to do?</label>
+            <select name="reason" required><option value="" disabled selected>Choose one</option><option>Deck staining or painting</option><option>Fence painting or staining</option><option>Both deck &amp; fence</option><option>Refinish weathered wood</option><option>Not sure yet</option></select></div>
+          <button class="btn btn--primary" type="submit">Get my free estimate
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="micro">We reply fast, usually the same day. Your details stay private, we never share them.</p>
+        </div>
+        <div class="fc-ok" id="fcOk2">
+          <div class="ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Got it, thank you.</h3><p>Taylor will be in touch shortly to set up your free estimate.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol"><img class="logo" src="img/logo-dark.png" alt="Companion Painting"><p>Premium, stress-free residential<br>painting across Kelowna &amp; the Okanagan.</p></div>
+      <div class="fcol"><h5>Services</h5><a href="interior-painting.html">Interior Painting</a><a href="exterior-painting.html">Exterior Painting</a><a href="deck-fence-painting.html">Deck &amp; Fence</a><a href="cabinet-painting.html">Cabinet Painting</a></div>
+      <div class="fcol"><h5>Company</h5><a href="index.html#process">Our Process</a><a href="index.html#about">About Us</a><a href="index.html#work">Our Work</a><a href="#faq">FAQ</a></div>
+      <div class="fcol"><h5>Get in touch</h5><a href="tel:+17789465773">(778) 946 5773</a><a href="mailto:taylor@companionpainting.ca">taylor@companionpainting.ca</a><p>BC Licensed FM1112157<br>Fully insured · 3-year warranty</p></div>
+    </div>
+    <div class="wrap fbar" style="padding-left:0;padding-right:0"><span>© 2026 Companion Painting</span><span>Serving Kelowna &amp; the Central Okanagan</span></div>
+  </div>
+</footer>
+<div class="mcta">
+  <a class="btn btn--ghost" href="tel:+17789465773"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.5-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg> Call</a>
+  <a class="btn btn--primary" href="#contact">Free Estimate</a>
+</div>
+<div id="lb"><img src="" alt=""></div>
+<script>
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function toggleMenu(open){
+    document.getElementById('mobileMenu').classList.toggle('open',open);
+    document.getElementById('mmBackdrop').classList.toggle('open',open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  (function(){
+    var h=document.getElementById('headline'), nodes=Array.from(h.childNodes); h.innerHTML='';
+    nodes.forEach(function(node){
+      if(node.nodeType===3){ node.textContent.split(/(\s+)/).forEach(function(tok){
+        if(tok.trim()===''){h.appendChild(document.createTextNode(tok));return;}
+        var w=document.createElement('span'); w.className='w'; w.textContent=tok; h.appendChild(w);}); }
+      else { var w=document.createElement('span'); w.className='w '+node.className; w.textContent=node.textContent; h.appendChild(w); }
+    });
+  })();
+  function forceShow(){ document.documentElement.classList.remove('anim');
+    document.querySelectorAll('#headline,#headline .w,.reveal').forEach(function(e){e.style.opacity='';e.style.transform='';}); }
+  var safety=setTimeout(forceShow,1800);
+  try{
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.set('#headline',{opacity:1});
+    if(!reduce){
+      gsap.timeline({defaults:{ease:'power3.out'},onComplete:function(){clearTimeout(safety);}})
+        .from('.eyebrow',{y:12,opacity:0,duration:.55},0)
+        .to('#headline .w',{opacity:1,y:0,duration:.8,stagger:.045,clearProps:'transform'},'-=.2')
+        .from('#heroSub',{opacity:0,y:18,duration:.7},'-=.45')
+        .from('#heroTrust',{opacity:0,y:18,duration:.7},'-=.5')
+        .from('#estFormWrap',{opacity:0,y:24,duration:.8},'-=.6');
+      gsap.utils.toArray('#heroSub,#heroTrust').forEach(function(e){e.classList.remove('reveal');});
+    } else { forceShow(); clearTimeout(safety); }
+    gsap.to('#prog',{width:'100%',ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
+    gsap.utils.toArray('.reveal').forEach(function(el){
+      if(el.closest('.hero')) return;
+      gsap.to(el,{opacity:1,y:0,duration:.75,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+    });
+  }catch(err){ forceShow(); clearTimeout(safety); }
+  var hdr=document.querySelector('header');
+  addEventListener('scroll',function(){hdr.classList.toggle('solid',scrollY>50);},{passive:true});
+  (function(){
+    var lb=document.getElementById('lb'), lbi=lb.querySelector('img');
+    document.querySelectorAll('.g img').forEach(function(im){
+      im.addEventListener('click',function(){lbi.src=im.src;lbi.alt=im.alt;lb.classList.add('open');});
+    });
+    lb.addEventListener('click',function(){lb.classList.remove('open');});
+  })();
+  document.querySelectorAll('.qa button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var qa=b.parentElement, a=qa.querySelector('.a'), open=qa.classList.toggle('open');
+      b.setAttribute('aria-expanded',open);
+      a.style.maxHeight = open ? a.scrollHeight+'px' : 0;
+    });
+  });
+  var ENDPOINT='https://profound-truth-production-4190.up.railway.app/webhook/companion/lp-lead';
+  function uuid(){return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c==='x'?r:(r&0x3|0x8);return v.toString(16);});}
+  function wire(formId, okId){
+    var form=document.getElementById(formId); if(!form) return;
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(form.querySelector('[name=company]').value){return;}
+      var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.style.opacity=.7;btn.textContent='Sending…';}
+      var eid=uuid();
+      var data={name:form.name.value.trim(),phone:form.phone.value.trim(),town:form.town.value.trim(),reason:form.reason.value,
+        source:'Website - Deck & Fence',page:location.pathname,event_id:eid};
+      try{gtag('event','conversion',{'send_to':'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}
+      try{fbq('track','Lead',{content_name:'Website - Deck & Fence'},{eventID:eid});}catch(_){}
+      try{gtag('event','generate_lead');}catch(_){}
+      fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+        .catch(function(){}).finally(function(){
+          form.querySelector('.fc-live').style.display='none';
+          document.getElementById(okId).style.display='block';
+        });
+    });
+  }
+  wire('estForm','fcOk');
+  wire('estForm2','fcOk2');
+</script>
+</body>
+</html>
