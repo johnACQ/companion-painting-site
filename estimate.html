@@ -35,6 +35,7 @@ img{display:block;max-width:100%}
 /* ---------- HEADER (matches site) ---------- */
 header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
   padding:13px 22px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);box-shadow:0 4px 20px -16px rgba(14,27,54,.4)}
+.logo{height:34px;width:auto}
 .brandmark{display:flex;align-items:center;gap:11px;font-family:Fraunces,serif;font-weight:600;font-size:20px;color:var(--ink)}
 .brandmark .dot{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-2));
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;box-shadow:0 8px 20px -8px rgba(7,12,203,.6)}
@@ -238,7 +239,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 <body>
 
 <header>
-  <a href="index.html" class="brandmark"><span class="dot">C</span> Companion<span style="color:var(--brand)">.</span></a>
+  <a href="index.html" aria-label="Companion Painting home"><img class="logo" src="img/logo-dark.png" alt="Companion Painting"></a>
   <div class="nav-right">
     <a class="phone" href="tel:+17789465773">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.5-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg>
