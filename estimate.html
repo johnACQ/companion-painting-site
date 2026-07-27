@@ -446,36 +446,45 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
    Every dollar figure the tool shows comes from right here.
    Ranges shown to the customer = point estimate ±SPREAD.
    ================================================================= */
+// ============================================================
+// PRICING — derived from Taylor's Production Rate Card v1 (Drive, Jul 26 2026)
+// Basis: $80/hr production, $1,000 job minimum. Band model translates his
+// per-unit rates ($/sqft, $/lnft, $/each) into homeowner-friendly bands using
+// typical Okanagan dimensions (assumptions noted). Tune any figure here; no rebuild.
+//   Std interior room = 12x12x8ft (~340 sqft wall, 144 sqft ceiling, ~44 lnft base)
+//   Exterior body sqft bands: small 1700 / med 2700 / large 4000 / estate 6000
+//   Cabinet "unit" = 1 box @ $130-280; kitchens: small ~12 / med ~20 / large ~30
+// ============================================================
 const PRICING = {
   spread: 0.12,           // ± band shown as the range (12%)
-  minShown: 350,          // never quote below this
-  // ---- INTERIOR: guided by room count ----
+  minShown: 1000,         // Taylor's stated $1,000 job minimum
+  // ---- INTERIOR: guided by room count (walls @ $0.93-1.85/sqft) ----
   interior: {
-    perRoom: 430,         // 1 standard room, walls, 2 coats, standard paint
+    perRoom: 450,         // std room walls, 2 coats std paint (~340 sqft @ ~$1.30)
     size:  { small:0.8, standard:1.0, large:1.4 },   // avg room size
-    addOns:{ ceilings:135, trim:120, accent:70, closets:55 }, // per room, if selected
+    addOns:{ ceilings:180, trim:165, accent:110, closets:130 }, // ceil $1.26/sf · base $1.60/lf + frames/window · extra colour $110 · closet $100-280
     tier:  { standard:1.0, premium:1.18, designer:1.42 },
     cond:  { good:1.0, fair:1.13, heavy:1.3 }
   },
-  // ---- EXTERIOR: guided by home size band ----
+  // ---- EXTERIOR: guided by home size band (body $0.66-1.32/sqft + prep $0.36-1.07) ----
   exterior: {
-    band:  { small:3300, medium:5400, large:8400, estate:12800 },  // full body repaint
+    band:  { small:2600, medium:4200, large:6200, estate:9300 },  // full body repaint, body+prep @ ~$1.55/sqft
     stories:{ one:1.0, two:1.18, three:1.32 },
-    addOns:{ trim:900, garage:650, deckSoffit:750, fenceLink:1400 },
+    addOns:{ trim:750, garage:180, deckSoffit:650, fenceLink:600 }, // fascia/trim/soffit lnft · garage door $56-80/ea · deck stain $2.67/sf · fence $0.80-8/lf
     tier:  { standard:1.0, premium:1.15, designer:1.34 },
     cond:  { good:1.0, fair:1.16, heavy:1.36 }
   },
-  // ---- CABINETS: guided by kitchen size ----
+  // ---- CABINETS: guided by kitchen size ($130-280/unit) ----
   cabinets: {
-    band:  { small:2900, medium:4400, large:6600 },   // doors+drawers+boxes
-    addOns:{ island:850, pantry:700, openShelf:400, hardware:350 },
+    band:  { small:2400, medium:4100, large:6300 },   // ~12/20/30 units @ ~$205
+    addOns:{ island:800, pantry:650, openShelf:400, hardware:350 },
     tier:  { standard:1.0, premium:1.16, designer:1.36 },
     cond:  { good:1.0, fair:1.1, heavy:1.24 }
   },
-  // ---- DECK & FENCE: guided by size band ----
+  // ---- DECK & FENCE: guided by size band (deck stain $2.67/sqft · fence/rails $0.80-8/lnft) ----
   deck: {
-    band:  { small:1200, medium:2400, large:4200 },
-    addOns:{ railings:600, stairs:350, fence:900, pergola:750 },
+    band:  { small:1200, medium:2400, large:4000 },
+    addOns:{ railings:600, stairs:350, fence:500, pergola:750 },
     tier:  { standard:1.0, premium:1.12, designer:1.28 },
     cond:  { good:1.0, fair:1.18, heavy:1.4 }
   }
