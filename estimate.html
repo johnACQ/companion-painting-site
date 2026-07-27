@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) - Google Ads AW-18338007193 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18338007193"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','AW-18338007193');
+  gtag('config','G-0VZXD6Z8FZ'); // Companion GA4
+</script>
+<!-- Meta Pixel - Companion dataset 1364684838798115 -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1364684838798115');fbq('track','PageView');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
@@ -397,6 +414,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
       <div class="q-label" style="text-align:center;margin-bottom:6px">Almost there 🎨</div>
       <div class="q-sub" style="text-align:center;margin-bottom:24px">Where should we send your estimate &amp; booking details?</div>
       <form id="leadForm">
+        <input type="text" class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="two-col">
           <div class="field"><label>First name</label><input name="firstName" required placeholder="Taylor"></div>
           <div class="field"><label>Last name</label><input name="lastName" required placeholder="Norquay"></div>
@@ -716,6 +734,10 @@ function reveal(){
   $("#resultPhoto").src = RESULT_PHOTO[S.service] || RESULT_PHOTO.interior;
   setStep(5);
   $("#livebar").classList.add("hide");
+  // Engagement signal: separates "used the tool but never submitted" from "never engaged".
+  // Not a conversion, so it stays off the Ads conversion action.
+  try{gtag('event','estimate_completed',{service:S.service,estimate_low:lo,estimate_high:hi});}catch(_){}
+  try{fbq('trackCustom','EstimateCompleted',{service:S.service});}catch(_){}
   countUp($("#lo"),lo); countUp($("#hi"),hi);
   setTimeout(paintBurst, 260);
 }
@@ -772,22 +794,42 @@ function restart(){ S.step=1;S.service=null;S.scope={};S.rooms=3;S.roomSize="sta
   $("#resultView").style.display="block";$("#leadView").style.display="none";$("#successView").style.display="none";
   setStep(1); }
 
-/* ⚠️ Wire this to Companion's GHL inbound webhook when ready.
-   Payload already includes the computed estimate + all answers. */
+/* ---- Companion estimator tracking (N1), same contract as the LPs ----
+   Capture click IDs on load into a 90-day cookie so they survive the multi-step
+   tool and land in the payload at submit. */
+function getC(n){var v=('; '+document.cookie).split('; '+n+'=');return v.length===2?v.pop().split(';').shift():'';}
+(function(){
+  function setC(n,v){document.cookie=n+'='+v+';path=/;max-age='+(90*86400)+';SameSite=Lax';}
+  try{
+    var p=new URLSearchParams(location.search);
+    if(p.get('gclid'))setC('_gclid',p.get('gclid'));
+    if(p.get('fbclid'))setC('_fbc','fb.1.'+Date.now()+'.'+p.get('fbclid'));
+  }catch(_){}
+})();
+
 const GHL_WEBHOOK_URL = "https://profound-truth-production-4190.up.railway.app/webhook/companion/lp-lead"; // Companion Railway handler: contact + opportunity + Slack
 $("#leadForm").addEventListener("submit", async e=>{
   e.preventDefault();
+  if(e.target.company && e.target.company.value){return;}          // honeypot -> drop bots
   const fd = Object.fromEntries(new FormData(e.target).entries());
+  delete fd.company;
   const v = calc();
   const low = round50(v*(1-PRICING.spread)), high = round50(v*(1+PRICING.spread));
   const scope = Object.keys(S.scope).filter(k=>S.scope[k]).join(", ");
+  const eid = 'cp-'+Date.now()+'-'+Math.floor(Math.random()*1e6);  // shared id: browser + server dedupe
   const payload = { ...fd, source:"Website Instant Estimator",
     service:S.service, estimateLow:low, estimateHigh:high,
     rooms:S.rooms, roomSize:S.roomSize, sizeBand:S.band, stories:S.stories, tier:S.tier, condition:S.cond, scope,
     // fields the Companion Railway lead handler reads (name/phone/town/reason/page)
     name:((fd.firstName||"")+" "+(fd.lastName||"")).trim(), town:(fd.address||""), page:"estimate",
+    gclid:getC('_gclid'), fbp:getC('_fbp'), fbc:getC('_fbc'), event_id:eid,
     reason:"INSTANT ESTIMATOR: "+S.service+" | est $"+low+" to $"+high+" | "+(scope||"walls")+" | timeframe "+(fd.timeframe||"n/a")+" | email "+(fd.email||"n/a") };
-  try{ if(GHL_WEBHOOK_URL){ await fetch(GHL_WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}); } }
+  // (1) client-side signal -> Google Ads conversion + GA4 + Meta browser Lead (event_id dedupes with server CAPI)
+  try{gtag('event','conversion',{send_to:'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}
+  try{gtag('event','generate_lead',{value:0,currency:'CAD'});}catch(_){}
+  try{fbq('track','Lead',{content_name:'Companion estimate'},{eventID:eid});}catch(_){}
+  // (2) server-side -> Railway: GHL contact + opportunity + Slack, and Meta CAPI once its env vars are set
+  try{ if(GHL_WEBHOOK_URL){ await fetch(GHL_WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),keepalive:true}); } }
   catch(err){ /* never block the customer on a network hiccup */ }
   $("#leadView").style.display="none"; $("#successView").style.display="block";
   $("#tool").scrollIntoView({behavior:"smooth",block:"start"});
