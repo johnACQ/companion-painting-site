@@ -299,7 +299,21 @@
   }
   @media(max-width:430px){ h1{font-size:33px} }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
+
+  /* two-step form (Apex locked LP format, Jul 27 2026) */
+  .fc-step{display:none}
+  .fc-step.on{display:block;animation:fcIn .22s ease}
+  @keyframes fcIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .fc-q{font-size:15px;font-weight:700;margin:18px 0 9px}
+  .fc-q:first-of-type{margin-top:4px}
+  .fc-prog{display:flex;gap:6px;margin:0 0 14px}
+  .fc-prog i{height:3px;flex:1;border-radius:2px;background:rgba(0,0,0,.12)}
+  .fc-prog i.on{background:currentColor}
+  .fc-back{background:none;border:none;font-size:13px;font-weight:600;padding:0 0 10px;cursor:pointer;opacity:.7}
+  .fc-hint{font-size:11.5px;opacity:.72;margin:-4px 0 7px}
+  .fc-err{display:none;color:#c0392b;font-size:12.5px;margin-top:9px;font-weight:600}
+  .fc-err.on{display:block}
+  </style>
 <style>
   .crumb{position:relative;z-index:5;font-size:12.5px;color:#dfe6ff;opacity:.85;margin-bottom:14px}
   .crumb a{color:#dfe6ff}.crumb a:hover{color:#fff}
@@ -392,15 +406,28 @@
           <h3>Get your free estimate</h3>
           <p class="fc-sub">Tell us about your Lake Country project. We will send a clear, written quote. No pressure.</p>
           <input type="text" class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="field"><label>Your name</label><input name="name" type="text" autocomplete="name" required placeholder="First and last name"></div>
-          <div class="field"><label>Phone</label><input name="phone" type="tel" autocomplete="tel" required placeholder="(778) 000 0000"></div>
-          <div class="field"><label>Your town</label><input name="town" type="text" required value="Lake Country"></div>
-          <div class="field"><label>What are you looking to paint?</label>
-            <select name="reason" required><option value="" disabled selected>Choose one</option>
-              <option>Interior</option><option>Exterior</option><option>Deck or fence</option><option>Cabinets</option><option>A few things / not sure yet</option></select></div>
-          <button class="btn btn--primary" type="submit">Get my free estimate
+          <div class="fc-prog"><i class="on"></i><i class="pg2"></i></div>
+          <div class="fc-step on step1">
+            <div class="fc-q">What are you looking to paint?</div>
+            <select name="reason" required><option value="" disabled selected>Choose one…</option><option>Interior</option><option>Exterior</option><option>Deck or fence</option><option>Cabinets</option><option>A few things / not sure yet</option></select>
+            <div class="fc-q">How soon are you looking to get it done?</div>
+            <select name="timeframe" required><option value="" disabled selected>Choose one…</option><option>As soon as possible</option><option>In the next month</option><option>In 2 to 3 months</option></select>
+            <div class="fc-q">Where are you located?</div>
+            <select name="town" required><option>Kelowna</option><option>West Kelowna</option><option selected>Lake Country</option><option>Peachland</option><option>Vernon</option><option>Winfield</option><option>Other / nearby</option></select>
+            <button class="btn btn--primary fcNext" type="button">Continue</button>
+            <div class="fc-err">Pick an option for each question to continue.</div>
+            <p class="micro">We reply fast, usually the same day. Your details stay private, we never share them.<span class="a2p-consent" style="display:block;margin-top:8px;opacity:.85;font-size:.82em;line-height:1.5">By submitting you agree to receive calls, texts and emails from Companion Painting about your estimate. Message and data rates may apply. Reply STOP to opt out. <a href="sms-terms.html" style="text-decoration:underline;color:inherit">SMS Terms</a> and <a href="privacy.html" style="text-decoration:underline;color:inherit">Privacy Policy</a>.</span></p>
+          </div>
+          <div class="fc-step step2">
+            <button type="button" class="fc-back">&larr; Back</button>
+            <div class="fc-q" style="margin-top:0">Last step &mdash; who should the painter call?</div>
+            <div class="field"><label>Your name</label><input name="name" type="text" autocomplete="name" required placeholder="First and last name"></div>
+            <div class="field"><label>Phone</label><input name="phone" type="tel" autocomplete="tel" required placeholder="(778) 000 0000"></div>
+            <div class="field"><label>Email</label><div class="fc-hint">So we can send your quote in writing.</div><input name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@email.com"></div>
+            <button class="btn btn--primary" type="submit">Get my free estimate
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          <p class="micro">We reply fast, usually the same day. Your details stay private, we never share them.</p>
+            <p class="micro">We reply fast, usually the same day. Your details stay private, we never share them.<span class="a2p-consent" style="display:block;margin-top:8px;opacity:.85;font-size:.82em;line-height:1.5">By submitting you agree to receive calls, texts and emails from Companion Painting about your estimate. Message and data rates may apply. Reply STOP to opt out. <a href="sms-terms.html" style="text-decoration:underline;color:inherit">SMS Terms</a> and <a href="privacy.html" style="text-decoration:underline;color:inherit">Privacy Policy</a>.</span></p>
+          </div>
         </div>
         <div class="fc-ok" id="fcOk">
           <div class="ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -500,15 +527,28 @@
           <h3>Get your free estimate</h3>
           <p class="fc-sub">Tell us about your Lake Country project. We will send a clear, written quote. No pressure.</p>
           <input type="text" class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="field"><label>Your name</label><input name="name" type="text" autocomplete="name" required placeholder="First and last name"></div>
-          <div class="field"><label>Phone</label><input name="phone" type="tel" autocomplete="tel" required placeholder="(778) 000 0000"></div>
-          <div class="field"><label>Your town</label><input name="town" type="text" required value="Lake Country"></div>
-          <div class="field"><label>What are you looking to paint?</label>
-            <select name="reason" required><option value="" disabled selected>Choose one</option>
-              <option>Interior</option><option>Exterior</option><option>Deck or fence</option><option>Cabinets</option><option>A few things / not sure yet</option></select></div>
-          <button class="btn btn--primary" type="submit">Get my free estimate
+          <div class="fc-prog"><i class="on"></i><i class="pg2"></i></div>
+          <div class="fc-step on step1">
+            <div class="fc-q">What are you looking to paint?</div>
+            <select name="reason" required><option value="" disabled selected>Choose one…</option><option>Interior</option><option>Exterior</option><option>Deck or fence</option><option>Cabinets</option><option>A few things / not sure yet</option></select>
+            <div class="fc-q">How soon are you looking to get it done?</div>
+            <select name="timeframe" required><option value="" disabled selected>Choose one…</option><option>As soon as possible</option><option>In the next month</option><option>In 2 to 3 months</option></select>
+            <div class="fc-q">Where are you located?</div>
+            <select name="town" required><option>Kelowna</option><option>West Kelowna</option><option selected>Lake Country</option><option>Peachland</option><option>Vernon</option><option>Winfield</option><option>Other / nearby</option></select>
+            <button class="btn btn--primary fcNext" type="button">Continue</button>
+            <div class="fc-err">Pick an option for each question to continue.</div>
+            <p class="micro">We reply fast, usually the same day. Your details stay private, we never share them.<span class="a2p-consent" style="display:block;margin-top:8px;opacity:.85;font-size:.82em;line-height:1.5">By submitting you agree to receive calls, texts and emails from Companion Painting about your estimate. Message and data rates may apply. Reply STOP to opt out. <a href="sms-terms.html" style="text-decoration:underline;color:inherit">SMS Terms</a> and <a href="privacy.html" style="text-decoration:underline;color:inherit">Privacy Policy</a>.</span></p>
+          </div>
+          <div class="fc-step step2">
+            <button type="button" class="fc-back">&larr; Back</button>
+            <div class="fc-q" style="margin-top:0">Last step &mdash; who should the painter call?</div>
+            <div class="field"><label>Your name</label><input name="name" type="text" autocomplete="name" required placeholder="First and last name"></div>
+            <div class="field"><label>Phone</label><input name="phone" type="tel" autocomplete="tel" required placeholder="(778) 000 0000"></div>
+            <div class="field"><label>Email</label><div class="fc-hint">So we can send your quote in writing.</div><input name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@email.com"></div>
+            <button class="btn btn--primary" type="submit">Get my free estimate
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          <p class="micro">We reply fast, usually the same day. Your details stay private, we never share them.</p>
+            <p class="micro">We reply fast, usually the same day. Your details stay private, we never share them.<span class="a2p-consent" style="display:block;margin-top:8px;opacity:.85;font-size:.82em;line-height:1.5">By submitting you agree to receive calls, texts and emails from Companion Painting about your estimate. Message and data rates may apply. Reply STOP to opt out. <a href="sms-terms.html" style="text-decoration:underline;color:inherit">SMS Terms</a> and <a href="privacy.html" style="text-decoration:underline;color:inherit">Privacy Policy</a>.</span></p>
+          </div>
         </div>
         <div class="fc-ok" id="fcOk2">
           <div class="ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -527,7 +567,8 @@
       <div class="fcol"><h5>Areas</h5><a href="west-kelowna-painters.html">West Kelowna</a><a href="lake-country-painters.html">Lake Country</a><a href="peachland-painters.html">Peachland</a><a href="vernon-painters.html">Vernon</a><a href="winfield-painters.html">Winfield</a></div>
       <div class="fcol"><h5>Get in touch</h5><a href="tel:+17789465773">(778) 946 5773</a><a href="mailto:taylor@companionpainting.ca">taylor@companionpainting.ca</a><p>BC Licensed FM1112157<br>Fully insured · 3-year warranty</p></div>
     </div>
-    <div class="wrap fbar" style="padding-left:0;padding-right:0"><span>© 2026 Companion Painting</span><span>Serving Kelowna &amp; the Central Okanagan</span></div>
+    <div class="wrap fbar" style="padding-left:0;padding-right:0"><span>© 2026 Companion Painting</span><span>Serving Kelowna &amp; the Central Okanagan</span>
+      <span><a href="privacy.html" style="text-decoration:underline">Privacy Policy</a> &middot; <a href="sms-terms.html" style="text-decoration:underline">SMS Terms</a></span></div>
   </div>
 </footer>
 <div class="mcta">
@@ -591,17 +632,38 @@
   });
   var ENDPOINT='https://profound-truth-production-4190.up.railway.app/webhook/companion/lp-lead';
   function uuid(){return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0,v=c==='x'?r:(r&0x3|0x8);return v.toString(16);});}
+  var SOURCE_LABEL='Website - Lake Country';
   function wire(formId, okId){
     var form=document.getElementById(formId); if(!form) return;
+    function val(n){var el=form.querySelector('[name="'+n+'"]');return el?el.value:'';}
+    var next=form.querySelector('.fcNext'), back=form.querySelector('.fc-back'),
+        s1=form.querySelector('.step1'), s2=form.querySelector('.step2'),
+        err=form.querySelector('.fc-err'), pg2=form.querySelector('.pg2');
+    if(next){next.addEventListener('click',function(){
+      if(!val('reason')||!val('timeframe')||!val('town')){err&&err.classList.add('on');return;}
+      err&&err.classList.remove('on');
+      s1.classList.remove('on'); s2.classList.add('on'); pg2&&pg2.classList.add('on');
+      form.scrollIntoView({behavior:'smooth',block:'center'});
+      try{gtag('event','form_step_1',{reason:val('reason'),timeframe:val('timeframe'),town:val('town')});}catch(_){}
+      try{fbq('trackCustom','FormStep1');}catch(_){}
+      setTimeout(function(){var n=form.querySelector('[name=name]');n&&n.focus();},260);
+    });}
+    if(back){back.addEventListener('click',function(){
+      s2.classList.remove('on'); s1.classList.add('on'); pg2&&pg2.classList.remove('on');
+      form.scrollIntoView({behavior:'smooth',block:'center'});
+    });}
     form.addEventListener('submit',function(e){
       e.preventDefault();
       if(form.querySelector('[name=company]').value){return;}
+      if(!form.name.value||!form.phone.value||!form.email.value||!val('reason')||!val('timeframe')||!val('town')){
+        form.reportValidity&&form.reportValidity();return;}
       var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.style.opacity=.7;btn.textContent='Sending…';}
       var eid=uuid();
-      var data={name:form.name.value.trim(),phone:form.phone.value.trim(),town:form.town.value.trim(),reason:form.reason.value,
-        source:'Website - Lake Country',page:location.pathname,event_id:eid};
+      var data={name:form.name.value.trim(),phone:form.phone.value.trim(),email:form.email.value.trim(),
+        town:val('town'),reason:val('reason'),timeframe:val('timeframe'),
+        source:SOURCE_LABEL,page:location.pathname,event_id:eid};
       try{gtag('event','conversion',{'send_to':'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}
-      try{fbq('track','Lead',{content_name:'Lake Country Page'},{eventID:eid});}catch(_){}
+      try{fbq('track','Lead',{content_name:SOURCE_LABEL},{eventID:eid});}catch(_){}
       try{gtag('event','generate_lead');}catch(_){}
       fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
         .catch(function(){}).finally(function(){
