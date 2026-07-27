@@ -72,6 +72,25 @@
   .form-card input:focus,.form-card select:focus{outline:none;border-color:var(--brand)}
   .form-card select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%235c6b85' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
   .hp{position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0}
+  /* two-step radio form */
+  .fc-step{display:none}
+  .fc-step.on{display:block;animation:fcIn .22s ease}
+  @keyframes fcIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .fc-q{font-size:15px;font-weight:700;color:#0e1b36;margin:20px 0 9px;letter-spacing:0;text-transform:none}
+  .fc-q:first-of-type{margin-top:6px}
+    border-radius:11px;padding:13px 15px;font-size:15px;font-weight:500;color:#0e1b36;cursor:pointer;
+    text-transform:none;letter-spacing:0;margin:0;transition:border-color .15s,background .15s}
+    border:2px solid #c2ccdf;transition:.15s}
+  .fc-prog{display:flex;gap:6px;margin:2px 0 14px}
+  .fc-prog i{height:3px;flex:1;border-radius:2px;background:#e2e8f5}
+  .fc-prog i.on{background:var(--brand)}
+  .fc-back{background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;
+    padding:0 0 10px;cursor:pointer}
+  .fc-back:hover{color:var(--brand)}
+  .fc-hint{font-size:11.5px;color:var(--muted);margin:-2px 0 7px;font-weight:400;
+    text-transform:none;letter-spacing:0}
+  .fc-err{display:none;color:#c0392b;font-size:12.5px;margin-top:9px;font-weight:600}
+  .fc-err.on{display:block}
   .fc-btn{width:100%;margin-top:18px;background:var(--brand);color:#fff;font-weight:700;font-size:17px;border:none;border-radius:11px;padding:16px;cursor:pointer;transition:.2s}
   .fc-btn:hover{filter:brightness(1.05);transform:translateY(-1px)}
   .fc-micro{margin-top:12px;font-size:11.5px;color:#5c6b85;text-align:center}
@@ -155,24 +174,33 @@
           <div class="fc-h">Book your free estimate</div>
           <div class="fc-s">Takes 20 seconds. A painter calls you back, no pressure.</div>
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <label for="name">Your name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required>
-          <label for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
-          <label for="town">Your town</label>
-          <select id="town" name="town" required>
-            <option value="" selected disabled>Choose your town…</option>
-            <option>Kelowna</option><option>West Kelowna</option><option>Lake Country</option>
-            <option>Peachland</option><option>Vernon</option><option>Winfield</option><option>Other / nearby</option>
-          </select>
-          <label for="reason">What needs painting?</label>
-          <select id="reason" name="reason" required>
-            <option value="" selected disabled>Choose one…</option>
-            <option>Whole exterior</option><option>Siding &amp; stucco</option>
-            <option>Trim, doors &amp; fascia</option><option>Deck or fence too</option><option>Not sure yet</option>
-          </select>
-          <button class="fc-btn" type="submit">Book my free estimate</button>
-          <div class="fc-micro">BC Licensed FM1112157 · Fully insured · 3-year warranty</div>
+          <div class="fc-prog"><i class="on" id="pg1"></i><i id="pg2"></i></div>
+
+          <div class="fc-step on" id="step1">
+            <div class="fc-q">What needs painting?</div>
+          <select name="reason" required><option value="" disabled selected>Choose one…</option><option>Whole exterior</option><option>Siding &amp; stucco</option><option>Trim, doors &amp; fascia</option><option>Deck or fence too</option><option>Not sure yet</option></select>
+            <div class="fc-q">How soon are you looking to get it done?</div>
+          <select name="timeframe" required><option value="" disabled selected>Choose one…</option><option>As soon as possible</option><option>In the next month</option><option>In 2 to 3 months</option></select>
+            <div class="fc-q">Where are you located?</div>
+          <select name="town" required><option value="" disabled selected>Choose your town…</option><option>Kelowna</option><option>West Kelowna</option><option>Lake Country</option><option>Peachland</option><option>Vernon</option><option>Winfield</option><option>Other / nearby</option></select>
+            <button class="fc-btn" type="button" id="fcNext">Continue</button>
+            <div class="fc-err" id="fcErr">Pick an option for each question to continue.</div>
+            <div class="fc-micro">BC Licensed FM1112157 · Fully insured · 3-year warranty<span class="a2p-consent" style="display:block;margin-top:8px;opacity:.85;font-size:.82em;line-height:1.5">By submitting you agree to receive calls, texts and emails from Companion Painting about your estimate. Message and data rates may apply. Reply STOP to opt out. <a href="sms-terms.html" style="text-decoration:underline;color:inherit">SMS Terms</a> and <a href="privacy.html" style="text-decoration:underline;color:inherit">Privacy Policy</a>.</span></div>
+          </div>
+
+          <div class="fc-step" id="step2">
+            <button type="button" class="fc-back" id="fcBack">&larr; Back</button>
+            <div class="fc-q" style="margin-top:0">Last step &mdash; who should the painter call?</div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+            <label for="email">Email</label>
+            <div class="fc-hint">So we can send your quote in writing.</div>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required>
+            <button class="fc-btn" type="submit">Book my free estimate</button>
+            <div class="fc-micro">BC Licensed FM1112157 · Fully insured · 3-year warranty<span class="a2p-consent" style="display:block;margin-top:8px;opacity:.85;font-size:.82em;line-height:1.5">By submitting you agree to receive calls, texts and emails from Companion Painting about your estimate. Message and data rates may apply. Reply STOP to opt out. <a href="sms-terms.html" style="text-decoration:underline;color:inherit">SMS Terms</a> and <a href="privacy.html" style="text-decoration:underline;color:inherit">Privacy Policy</a>.</span></div>
+          </div>
         </form>
         <div class="form-card fc-done" id="done" style="margin-top:0">
           <div class="ok"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -290,20 +318,50 @@
     }catch(_){}
   })();
 
+  // ── two-step: gate step 1 on all three radios, then reveal contact step ──
+  (function(){
+    var f=document.getElementById('lead');
+    function val(n){var el=f.querySelector('[name="'+n+'"]');return el?el.value:'';}
+    document.getElementById('fcNext').addEventListener('click',function(){
+      var err=document.getElementById('fcErr');
+      if(!val('reason')||!val('timeframe')||!val('town')){err.classList.add('on');return;}
+      err.classList.remove('on');
+      document.getElementById('step1').classList.remove('on');
+      document.getElementById('step2').classList.add('on');
+      document.getElementById('pg2').classList.add('on');
+      f.scrollIntoView({behavior:'smooth',block:'center'});
+      // funnel measurement: lets us see step1 -> step2 drop-off instead of guessing
+      try{gtag('event','form_step_1',{reason:val('reason'),timeframe:val('timeframe'),town:val('town')});}catch(_){}
+      try{fbq('trackCustom','FormStep1');}catch(_){}
+      setTimeout(function(){var n=document.getElementById('name');n&&n.focus();},260);
+    });
+    document.getElementById('fcBack').addEventListener('click',function(){
+      document.getElementById('step2').classList.remove('on');
+      document.getElementById('step1').classList.add('on');
+      document.getElementById('pg2').classList.remove('on');
+      f.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  })();
+
   document.getElementById('lead').addEventListener('submit',function(e){
     e.preventDefault();
     if(this.company && this.company.value){return;}                 // honeypot -> drop bots
-    if(!this.name.value||!this.phone.value||!this.town.value||!this.reason.value){this.reportValidity&&this.reportValidity();return;}
+    function val(n){var el=this.querySelector('[name="'+n+'"]');return el?el.value:'';}
+    val=val.bind(this);
+    var reason=val('reason'), timeframe=val('timeframe'), town=val('town');
+    if(!this.name.value||!this.phone.value||!this.email.value||!reason||!timeframe||!town){
+      this.reportValidity&&this.reportValidity();return;}
     function getC(n){var v=('; '+document.cookie).split('; '+n+'=');return v.length===2?v.pop().split(';').shift():'';}
     var eid='cp-'+Date.now()+'-'+Math.floor(Math.random()*1e6);     // shared id: browser + server dedupe
-    var payload={name:this.name.value,phone:this.phone.value,town:this.town.value,reason:this.reason.value,
+    var payload={name:this.name.value,phone:this.phone.value,email:this.email.value,
+      town:town,reason:reason,timeframe:timeframe,
       page:(location.pathname.split('/').pop()||'lp').replace('.html',''),
       gclid:getC('_gclid'),fbp:getC('_fbp'),fbc:getC('_fbc'),event_id:eid,source:'google-lp'};
-    // (1) client-side signal -> GTM fires Google Ads conversion + GA4 + Meta browser Lead (event_id dedupes with server)
+    // (1) client-side signal -> Google Ads conversion + GA4 + Meta browser Lead (event_id dedupes with server)
     window.dataLayer=window.dataLayer||[];
-    try{gtag('event','conversion',{send_to:'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}   // Google Ads: Website Lead (GTM retired for these owned LPs)
-    try{gtag('event','generate_lead',{value:0,currency:'CAD'});}catch(_){}                         // GA4 (no-op until G- config set in head)
-    try{fbq('track','Lead',{content_name:'Companion '+payload.page},{eventID:eid});}catch(_){}     // Meta browser Lead (dedupes w/ server CAPI via eid)
+    try{gtag('event','conversion',{send_to:'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}
+    try{gtag('event','generate_lead',{value:0,currency:'CAD'});}catch(_){}
+    try{fbq('track','Lead',{content_name:'Companion '+payload.page},{eventID:eid});}catch(_){}
     // (2) server-side -> Railway: honeypot+phone validate -> GHL upsert + speed-to-lead -> Meta CAPI Lead (hashed) -> Google OCI
     try{fetch('https://profound-truth-production-4190.up.railway.app/webhook/companion/lp-lead',
       {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true});}catch(_){}
