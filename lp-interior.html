@@ -107,7 +107,7 @@
   .lede{margin-top:16px;color:var(--muted);font-size:17px;max-width:56ch}
   .pains{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px}
   .pain{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 17px;color:#33415c;font-size:15px}
-  .pain .pi{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:#eef1ff;color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:12px;margin-top:1px}
+  .pain .pi{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:#fdecec;color:#c62828;display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:1px}
   .steps{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
   .step .n{font-family:Fraunces,serif;font-size:30px;color:var(--brand);font-weight:600}
   .step h4{font-size:17px;margin:10px 0 7px;font-weight:600}
@@ -172,7 +172,7 @@
       <div>
         <form class="form-card" id="lead" method="POST" action="#" novalidate>
           <div class="fc-h">Book your free estimate</div>
-          <div class="fc-s">Takes 20 seconds. A painter calls you back, no pressure.</div>
+          <div class="fc-s">Takes 20 seconds. We call you right away, no pressure.</div>
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="fc-prog"><i class="on" id="pg1"></i><i id="pg2"></i></div>
 
@@ -190,7 +190,7 @@
 
           <div class="fc-step" id="step2">
             <button type="button" class="fc-back" id="fcBack">&larr; Back</button>
-            <div class="fc-q" style="margin-top:0">Last step, who should the painter call?</div>
+            <div class="fc-q" style="margin-top:0">Last step, who should we call?</div>
             <label for="name">Your name</label>
             <input id="name" name="name" type="text" autocomplete="name" required>
             <label for="phone">Phone</label>
@@ -205,7 +205,7 @@
         <div class="form-card fc-done" id="done" style="margin-top:0">
           <div class="ok"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div>
           <div class="fc-h">Got it, thank you.</div>
-          <p style="color:var(--muted);margin-top:8px;font-size:14.5px">Taylor will call you back shortly to book your free estimate. Prefer to talk now? Call <a href="tel:+17789465773" style="color:var(--brand);font-weight:600">(778) 946 5773</a>.</p>
+          <p style="color:var(--muted);margin-top:8px;font-size:14.5px">We'll call you back shortly to book your free estimate. Prefer to talk now? Call <a href="tel:+17789465773" style="color:var(--brand);font-weight:600">(778) 946 5773</a>.</p>
         </div>
       </div>
     </div>
@@ -218,12 +218,8 @@
     <p class="kicker">Before you hire anyone</p>
     <h2>Living through an interior repaint shouldn't be a <span class="em">nightmare</span>.</h2>
     <p class="lede">The painting is the easy part. The dust, the disruption, and a crew tramping through your home for a week is what people dread. Sound familiar?</p>
-    <div class="pains">
-      <div class="pain"><span class="pi">?</span> Started a room yourself and thought "this is taking forever."</div>
-      <div class="pain"><span class="pi">?</span> Roller marks, patchy walls, and lines that never looked straight.</div>
-      <div class="pain"><span class="pi">?</span> Painters who left dust, tape and tools all through your home.</div>
-      <div class="pain"><span class="pi">?</span> Furniture and floors that weren't properly covered.</div>
-    </div>
+    <div class="pains"><div class="pain"><span class="pi">!</span> A crew that quoted one price, then found reasons to add to it.</div><div class="pain"><span class="pi">!</span> Roller marks, patchy walls and lines that never looked straight.</div><div class="pain"><span class="pi">!</span> Dust, tape and tools left all through your home.</div><div class="pain"><span class="pi">!</span> Furniture and floors that weren't properly covered.</div></div>
+        <p class="lede" style="margin-top:20px"><b>Companion does none of that. We protect every surface, cut clean lines, and leave your home tidy every single day. Backed by a craftsmanship warranty of up to 9 years.</b></p>
   </div>
 </section>
 
@@ -232,12 +228,7 @@
   <div class="wrap">
     <p class="kicker">How we take the stress out of it</p>
     <h2>A clear plan, a clean site, and a finish that lasts.</h2>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><h4>Free estimate</h4><p>We look at your home, listen to what you want, and give you a clear written quote. The price we say is the price you pay.</p></div>
-      <div class="step"><div class="n">2</div><h4>Protect &amp; prep</h4><p>Floors and furniture covered, walls patched and sanded. The boring part, done right, is why the finish looks flawless.</p></div>
-      <div class="step"><div class="n">3</div><h4>Clean, careful coats</h4><p>Yard and windows protected, crisp lines, tidy every day. We treat your place like our own.</p></div>
-      <div class="step"><div class="n">4</div><h4>Walkthrough + warranty</h4><p>We walk it with you and don't finish until you're happy. Backed by a craftsmanship warranty of up to 9 years.</p></div>
-    </div>
+    <div class="steps"><div class="step"><div class="n">1</div><h4>On-site walkthrough</h4><p>We come out, listen to what you're picturing, and walk the space with you. We point out what other painters gloss over, the patch work, the problem walls, the trim that needs attention, and give you a clear written quote. The price we say is the price you pay.</p></div><div class="step"><div class="n">2</div><h4>Protect &amp; prep</h4><p>Floors and furniture covered, walls patched and sanded. The boring part, done right, is why the finish looks flawless.</p></div><div class="step"><div class="n">3</div><h4>Clean, careful coats</h4><p>Floors and furniture stay covered, crisp lines throughout, and we tidy up every day, not just at the end.</p></div><div class="step"><div class="n">4</div><h4>Walkthrough + warranty</h4><p>We walk it with you at the end and don't finish until you're happy. Backed by a craftsmanship warranty of up to 9 years.</p></div></div>
   </div>
 </section>
 
@@ -273,14 +264,7 @@
   <div class="wrap">
     <p class="kicker">Common questions</p>
     <h2>Good to know before you book.</h2>
-    <div class="faq">
-      <details><summary>Is the estimate really free?</summary><p>Yes. We come out, take a look, and give you a clear written quote with no obligation and no pushy follow-ups. You decide on your terms.</p></details>
-      <details><summary>How soon can you start?</summary><p>Once you're happy with the quote we confirm a start date and tell you what to expect ahead of time, so nothing feels last-minute. We book up fast, so earlier is better.</p></details>
-      <details><summary>Do you cover my town?</summary><p>We paint across Kelowna, West Kelowna, Lake Country, Peachland, Vernon and nearby. Pick your town on the form and we'll confirm.</p></details>
-      <details><summary>Do you move furniture and cover floors?</summary><p>Yes. We shift and cover furniture, protect your floors, and mask everything that isn't getting painted. You come home to fresh walls, not a mess.</p></details>
-      <details><summary>How long will my rooms be out of action?</summary><p>Most interior jobs are a few days, not weeks. We tell you the timeline upfront and keep the disruption to a minimum so you can keep living in your home.</p></details>
-      <details><summary>Are you licensed and insured?</summary><p>Yes. BC Licensed (FM1112157) and fully insured with $3M liability, and every job is backed by a craftsmanship warranty of up to 9 years.</p></details>
-    </div>
+    <div class="faq"><details><summary>Is the estimate really free?</summary><p>Yes. We come out, take a look, and give you a clear written quote with no obligation and no pushy follow-ups. You decide on your terms.</p></details><details><summary>Are you licensed and insured?</summary><p>Yes. BC Licensed (FM1112157) and fully insured with $3M liability, and every job is backed by a craftsmanship warranty of up to 9 years.</p></details><details><summary>What does an interior repaint cost?</summary><p>It depends on the number of rooms, the wall condition and how much prep is involved, which is why we quote in person instead of throwing out a number that creeps up later. We're not the cheapest, but the price we quote is the price you pay, and it's done once.</p></details><details><summary>Do you move furniture and cover floors?</summary><p>Yes. We shift and cover furniture, protect your floors, and mask everything that isn't getting painted. You come home to fresh walls, not a mess.</p></details><details><summary>How long will my rooms be out of action?</summary><p>It depends on the size of the job, but you'll know the full timeline before we start, no surprises. We work room by room where we can, so you can keep living in your home while we go.</p></details><details><summary>How soon can you start?</summary><p>Once you're happy with the quote we confirm a start date and tell you what to expect ahead of time, so nothing feels last-minute. We book up fast, so earlier is better.</p></details><details><summary>Do you cover my town?</summary><p>We paint across Kelowna, West Kelowna, Lake Country, Peachland, Vernon and nearby. Pick your town on the form and we'll confirm.</p></details></div>
   </div>
 </section>
 

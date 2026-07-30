@@ -107,7 +107,7 @@
   .lede{margin-top:16px;color:var(--muted);font-size:17px;max-width:56ch}
   .pains{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px}
   .pain{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 17px;color:#33415c;font-size:15px}
-  .pain .pi{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:#eef1ff;color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:12px;margin-top:1px}
+  .pain .pi{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:#fdecec;color:#c62828;display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:1px}
   .steps{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
   .step .n{font-family:Fraunces,serif;font-size:30px;color:var(--brand);font-weight:600}
   .step h4{font-size:17px;margin:10px 0 7px;font-weight:600}
@@ -172,7 +172,7 @@
       <div>
         <form class="form-card" id="lead" method="POST" action="#" novalidate>
           <div class="fc-h">Book your free estimate</div>
-          <div class="fc-s">Takes 20 seconds. A painter calls you back, no pressure.</div>
+          <div class="fc-s">Takes 20 seconds. We call you right away, no pressure.</div>
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="fc-prog"><i class="on" id="pg1"></i><i id="pg2"></i></div>
 
@@ -190,7 +190,7 @@
 
           <div class="fc-step" id="step2">
             <button type="button" class="fc-back" id="fcBack">&larr; Back</button>
-            <div class="fc-q" style="margin-top:0">Last step, who should the painter call?</div>
+            <div class="fc-q" style="margin-top:0">Last step, who should we call?</div>
             <label for="name">Your name</label>
             <input id="name" name="name" type="text" autocomplete="name" required>
             <label for="phone">Phone</label>
@@ -205,7 +205,7 @@
         <div class="form-card fc-done" id="done" style="margin-top:0">
           <div class="ok"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div>
           <div class="fc-h">Got it, thank you.</div>
-          <p style="color:var(--muted);margin-top:8px;font-size:14.5px">Taylor will call you back shortly to book your free estimate. Prefer to talk now? Call <a href="tel:+17789465773" style="color:var(--brand);font-weight:600">(778) 946 5773</a>.</p>
+          <p style="color:var(--muted);margin-top:8px;font-size:14.5px">We'll call you back shortly to book your free estimate. Prefer to talk now? Call <a href="tel:+17789465773" style="color:var(--brand);font-weight:600">(778) 946 5773</a>.</p>
         </div>
       </div>
     </div>
@@ -218,12 +218,8 @@
     <p class="kicker">Before you hire anyone</p>
     <h2>Hiring an exterior painter shouldn't feel like a <span class="em">gamble</span>.</h2>
     <p class="lede">A bad exterior job doesn't just look off. It peels, it fades, and you're paying to do it all again in a year. Sound familiar?</p>
-    <div class="pains">
-      <div class="pain"><span class="pi">?</span> A crew that quoted low, then the price crept up halfway through.</div>
-      <div class="pain"><span class="pi">?</span> Paint that looked fine for a summer, then started peeling.</div>
-      <div class="pain"><span class="pi">?</span> Painters who left overspray, mess and tools all over your yard.</div>
-      <div class="pain"><span class="pi">?</span> Booking a start date, then waiting around for no-one to show.</div>
-    </div>
+    <div class="pains"><div class="pain"><span class="pi">!</span> A crew that quoted low, then let the price creep up halfway through.</div><div class="pain"><span class="pi">!</span> A start date you booked, then waited around for no one to show.</div><div class="pain"><span class="pi">!</span> Paint that looked fine for one summer, then started peeling.</div><div class="pain"><span class="pi">!</span> A yard left covered in overspray, mess and tools when they packed up.</div></div>
+        <p class="lede" style="margin-top:20px"><b>Companion does none of that. One fixed quote, a craftsmanship warranty of up to 9 years in writing, and a crew that shows up the day we said.</b></p>
   </div>
 </section>
 
@@ -232,12 +228,7 @@
   <div class="wrap">
     <p class="kicker">How we take the stress out of it</p>
     <h2>A clear plan, a clean site, and a finish that lasts.</h2>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><h4>Free estimate</h4><p>We look at your home, listen to what you want, and give you a clear written quote. The price we say is the price you pay.</p></div>
-      <div class="step"><div class="n">2</div><h4>Proper prep</h4><p>Wash, scrape, sand, prime. The part cheap crews skip is the part that makes it last.</p></div>
-      <div class="step"><div class="n">3</div><h4>Clean, careful coats</h4><p>Yard and windows protected, crisp lines, tidy every day. We treat your place like our own.</p></div>
-      <div class="step"><div class="n">4</div><h4>Walkthrough + warranty</h4><p>We walk it with you and don't finish until you're happy. Backed by a craftsmanship warranty of up to 9 years.</p></div>
-    </div>
+    <div class="steps"><div class="step"><div class="n">1</div><h4>On-site walkthrough</h4><p>We come out, listen to what you're picturing, and walk every surface with you. We point out the spots other estimators miss, the failing caulk, the bare wood starting to rot, and match the right product to each surface. Then a clear written quote. The price we say is the price you pay.</p></div><div class="step"><div class="n">2</div><h4>Proper prep</h4><p>Wash, scrape, sand, prime. The part cheap crews skip is the part that makes it last.</p></div><div class="step"><div class="n">3</div><h4>Clean, careful coats</h4><p>Yard and windows protected, crisp lines, and we clean up every day, not just at the end.</p></div><div class="step"><div class="n">4</div><h4>Walkthrough + warranty</h4><p>We walk it with you at the end and don't finish until you're happy. Backed by a craftsmanship warranty of up to 9 years.</p></div></div>
   </div>
 </section>
 
@@ -273,14 +264,7 @@
   <div class="wrap">
     <p class="kicker">Common questions</p>
     <h2>Good to know before you book.</h2>
-    <div class="faq">
-      <details><summary>Is the estimate really free?</summary><p>Yes. We come out, take a look, and give you a clear written quote with no obligation and no pushy follow-ups. You decide on your terms.</p></details>
-      <details><summary>How soon can you start?</summary><p>Once you're happy with the quote we confirm a start date and tell you what to expect ahead of time, so nothing feels last-minute. Exterior season books up, so earlier is better.</p></details>
-      <details><summary>Do you cover my town?</summary><p>We paint across Kelowna, West Kelowna, Lake Country, Peachland, Vernon and nearby. Pick your town on the form and we'll confirm.</p></details>
-      <details><summary>What about trim, doors and fascia?</summary><p>Absolutely. We handle the whole exterior, or just the parts you want refreshed. Tell us on the form and we'll scope it in the quote.</p></details>
-      <details><summary>What if the weather turns?</summary><p>We plan around it. Exterior coatings need the right conditions to cure properly, so we won't rush a coat on just to hit a date, that's how finishes fail early.</p></details>
-      <details><summary>Are you licensed and insured?</summary><p>Yes. BC Licensed (FM1112157) and fully insured with $3M liability, and every job is backed by a craftsmanship warranty of up to 9 years.</p></details>
-    </div>
+    <div class="faq"><details><summary>Is the estimate really free?</summary><p>Yes. We come out, take a look, and give you a clear written quote with no obligation and no pushy follow-ups. You decide on your terms.</p></details><details><summary>Are you licensed and insured?</summary><p>Yes. BC Licensed (FM1112157) and fully insured with $3M liability, and every job is backed by a craftsmanship warranty of up to 9 years.</p></details><details><summary>What does an exterior repaint cost?</summary><p>It depends on the size, the surfaces and how much prep is involved, which is why we quote in person instead of throwing out a number that creeps up later. We're not the cheapest, but the price we quote is the price you pay, and it's done once.</p></details><details><summary>How soon can you start?</summary><p>Once you're happy with the quote we confirm a start date and tell you what to expect ahead of time, so nothing feels last-minute. Exterior season books up, so earlier is better.</p></details><details><summary>Do you cover my town?</summary><p>We paint across Kelowna, West Kelowna, Lake Country, Peachland, Vernon and nearby. Pick your town on the form and we'll confirm.</p></details><details><summary>What about trim, doors and fascia?</summary><p>Yes. We handle the whole exterior, or just the parts you want refreshed. Tell us on the form and we'll scope it in the quote.</p></details><details><summary>What if the weather turns?</summary><p>We plan around it. Exterior coatings need the right conditions to cure properly, so we won't rush a coat just to hit a date. That's how finishes fail early.</p></details></div>
   </div>
 </section>
 
