@@ -416,7 +416,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
       <form id="leadForm">
         <input type="text" class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="two-col">
-          <div class="field"><label>First name</label><input name="firstName" required placeholder="Taylor"></div>
+          <div class="field"><label>First name</label><input name="firstName" required placeholder="First name"></div>
           <div class="field"><label>Last name</label><input name="lastName" required placeholder="Norquay"></div>
         </div>
         <div class="field"><label>Mobile number</label><input name="phone" type="tel" required placeholder="(778) 000-0000"></div>
@@ -439,7 +439,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
     <div class="success" id="successView" style="display:none">
       <div class="big"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 7"/></svg></div>
       <h2>You're all set! 🙌</h2>
-      <p><b>Taylor</b> will personally reach out within one business day to confirm your estimate and book your free on-site walkthrough.</p>
+      <p><b>We</b> will personally reach out within one business day to confirm your estimate and book your free on-site walkthrough.</p>
       <p style="margin-top:14px">Need it sooner? Call us anytime at <a href="tel:+17789465773" style="color:var(--brand);font-weight:600">(778) 946 5773</a>.</p>
     </div>
   </div>
@@ -465,8 +465,8 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
    Ranges shown to the customer = point estimate ±SPREAD.
    ================================================================= */
 // ============================================================
-// PRICING — derived from Taylor's Production Rate Card v1 (Drive, Jul 26 2026)
-// Basis: $80/hr production, $1,000 job minimum. Band model translates his
+// PRICING
+// Basis: $80/hr production, $2,000 job minimum. Band model translates his
 // per-unit rates ($/sqft, $/lnft, $/each) into homeowner-friendly bands using
 // typical Okanagan dimensions (assumptions noted). Tune any figure here; no rebuild.
 //   Std interior room = 12x12x8ft (~340 sqft wall, 144 sqft ceiling, ~44 lnft base)
@@ -475,7 +475,7 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
 // ============================================================
 const PRICING = {
   spread: 0.12,           // ± band shown as the range (12%)
-  minShown: 1000,         // Taylor's stated $1,000 job minimum
+  minShown: 2000,         // job minimum
   // ---- INTERIOR: guided by room count (walls @ $0.93-1.85/sqft) ----
   interior: {
     perRoom: 450,         // std room walls, 2 coats std paint (~340 sqft @ ~$1.30)
