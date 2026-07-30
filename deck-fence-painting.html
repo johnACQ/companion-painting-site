@@ -431,6 +431,8 @@
           <div class="fc-step on step1">
             <div class="fc-q">What are you looking to paint?</div>
             <select name="reason" required><option value="" disabled selected>Choose one…</option><option>Deck staining or painting</option><option>Fence painting or staining</option><option>Both deck &amp; fence</option><option>Refinish weathered wood</option><option>Not sure yet</option></select>
+            <div class="fc-q">What condition is the wood in?</div>
+            <select name="wood_condition" required><option value="" disabled selected>Choose one…</option><option>Good, just needs a refresh</option><option>Weathered or greying</option><option>Finish is peeling or failing</option><option>Not sure</option></select>
             <div class="fc-q">How soon are you looking to get it done?</div>
             <select name="timeframe" required><option value="" disabled selected>Choose one…</option><option>As soon as possible</option><option>In the next month</option><option>In 2 to 3 months</option></select>
             <div class="fc-q">Where are you located?</div>
@@ -557,6 +559,8 @@
           <div class="fc-step on step1">
             <div class="fc-q">What are you looking to paint?</div>
             <select name="reason" required><option value="" disabled selected>Choose one…</option><option>Deck staining or painting</option><option>Fence painting or staining</option><option>Both deck &amp; fence</option><option>Refinish weathered wood</option><option>Not sure yet</option></select>
+            <div class="fc-q">What condition is the wood in?</div>
+            <select name="wood_condition" required><option value="" disabled selected>Choose one…</option><option>Good, just needs a refresh</option><option>Weathered or greying</option><option>Finish is peeling or failing</option><option>Not sure</option></select>
             <div class="fc-q">How soon are you looking to get it done?</div>
             <select name="timeframe" required><option value="" disabled selected>Choose one…</option><option>As soon as possible</option><option>In the next month</option><option>In 2 to 3 months</option></select>
             <div class="fc-q">Where are you located?</div>
@@ -664,7 +668,7 @@
         s1=form.querySelector('.step1'), s2=form.querySelector('.step2'),
         err=form.querySelector('.fc-err'), pg2=form.querySelector('.pg2');
     if(next){next.addEventListener('click',function(){
-      if(!val('reason')||!val('timeframe')||!val('town')){err&&err.classList.add('on');return;}
+      if(!val('reason')||!val('wood_condition')||!val('timeframe')||!val('town')){err&&err.classList.add('on');return;}
       err&&err.classList.remove('on');
       s1.classList.remove('on'); s2.classList.add('on'); pg2&&pg2.classList.add('on');
       form.scrollIntoView({behavior:'smooth',block:'center'});
@@ -684,8 +688,8 @@
       var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.style.opacity=.7;btn.textContent='Sending…';}
       var eid=uuid();
       var data={name:form.name.value.trim(),phone:form.phone.value.trim(),email:form.email.value.trim(),
-        town:val('town'),reason:val('reason'),timeframe:val('timeframe'),
-        source:SOURCE_LABEL,page:location.pathname,event_id:eid};
+        town:val('town'),reason:val('reason'),wood_condition:val('wood_condition'),timeframe:val('timeframe'),
+        source:SOURCE_LABEL,page:(location.pathname.split('/').pop()||'').replace('.html',''),event_id:eid};
       try{gtag('event','conversion',{'send_to':'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}
       try{fbq('track','Lead',{content_name:SOURCE_LABEL},{eventID:eid});}catch(_){}
       try{gtag('event','generate_lead');}catch(_){}

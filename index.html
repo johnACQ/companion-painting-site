@@ -882,7 +882,7 @@
       var eid=uuid();
       var data={name:form.name.value.trim(),phone:form.phone.value.trim(),email:form.email.value.trim(),
         town:val('town'),reason:val('reason'),timeframe:val('timeframe'),
-        source:SOURCE_LABEL,page:location.pathname,event_id:eid};
+        source:SOURCE_LABEL,page:(location.pathname.split('/').pop()||'').replace('.html',''),event_id:eid};
       try{gtag('event','conversion',{'send_to':'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}
       try{fbq('track','Lead',{content_name:SOURCE_LABEL},{eventID:eid});}catch(_){}
       try{gtag('event','generate_lead');}catch(_){}
