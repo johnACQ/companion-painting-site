@@ -697,7 +697,7 @@
       var eid=uuid();
       var data={name:form.name.value.trim(),phone:form.phone.value.trim(),email:form.email.value.trim(),
         town:val('town'),reason:val('reason'),timeframe:val('timeframe'),
-        source:SOURCE_LABEL,page:(location.pathname.split('/').pop()||'').replace('.html',''),event_id:eid};
+        source:SOURCE_LABEL,page:(location.pathname.split('/').pop()||'').replace('.html',''),gclid:getC('_gclid'),fbp:getC('_fbp'),fbc:getC('_fbc'),event_id:eid};
       try{gtag('event','conversion',{'send_to':'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}
       try{fbq('track','Lead',{content_name:SOURCE_LABEL},{eventID:eid});}catch(_){}
       try{gtag('event','generate_lead');}catch(_){}
@@ -710,6 +710,18 @@
   }
   wire('estForm','fcOk');
   wire('estForm2','fcOk2');
+</script>
+<script>
+  // ---- Click-id capture (site-wide) ----
+  // Land anywhere with ?gclid/?fbclid (brand ads hit the homepage), persist 90 days
+  // so the id survives navigation to any form. Mirrors the lp-* pages.
+  function setC(n,v){document.cookie=n+'='+v+';path=/;max-age='+(90*86400)+';SameSite=Lax';}
+  function getC(n){var v=('; '+document.cookie).split('; '+n+'=');return v.length===2?v.pop().split(';').shift():'';}
+  (function(){try{
+    var p=new URLSearchParams(location.search);
+    if(p.get('gclid'))setC('_gclid',p.get('gclid'));
+    if(p.get('fbclid'))setC('_fbc','fb.1.'+Date.now()+'.'+p.get('fbclid'));
+  }catch(_){}})();
 </script>
 </body>
 </html>
