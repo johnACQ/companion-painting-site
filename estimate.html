@@ -485,13 +485,20 @@ const PRICING = {
     tier:  { standard:1.0, premium:1.18, designer:1.42 },
     cond:  { good:1.0, fair:1.13, heavy:1.3 }
   },
-  // ---- EXTERIOR: guided by home size band (body $0.66-1.32/sqft + prep $0.36-1.07) ----
+  // ---- EXTERIOR: rate-range model (Taylor's calibration, Jul 31 doc) ----
+  // Body $0.66-1.32/sqft + prep $0.36-1.07/sqft = $1.02-2.39/sqft. Condition sets
+  // the POSITION in that range (prep is the spread driver); factors STACK, never average.
   exterior: {
-    band:  { small:2600, medium:4200, large:6200, estate:9300 },  // full body repaint, body+prep @ ~$1.55/sqft
-    stories:{ one:1.0, two:1.18, three:1.32 },
-    addOns:{ trim:750, garage:180, deckSoffit:650, fenceLink:600 }, // fascia/trim/soffit lnft · garage door $56-80/ea · deck stain $2.67/sf · fence $0.80-8/lf
-    tier:  { standard:1.0, premium:1.15, designer:1.34 },
-    cond:  { good:1.0, fair:1.16, heavy:1.36 }
+    sqft:  { small:1700, medium:2700, large:4000, estate:6000 },  // single-storey wall area
+    rateLo: 1.02, rateHi: 2.39,
+    condPos:{ good:0.2, fair:0.6, heavy:0.95 },      // good=bottom third, fair=middle, needs-work=top
+    storyArea:{ one:1.0, two:1.4, three:1.65 },      // taller = more wall
+    scaffold3: 1000,                                 // 3+/tall flat scaffolding line
+    siding: { stucco:1.15, wood:1.0, vinyl:0.95 },   // stucco drinks paint
+    colourX:{ same:1.0, change:1.06 },
+    whitePerSqft: 0.28,                              // rate-card change-to-white line
+    addOns:{ trim:750, garage:180, deckSoffit:650, fenceLink:600 },
+    tier:  { standard:1.0, premium:1.125, designer:1.225 }   // +10-15% / +20-25% per spec
   },
   // ---- CABINETS: guided by kitchen size ($130-280/unit) ----
   cabinets: {
@@ -534,7 +541,7 @@ const CONTENT = {
       {k:"large",t:"Large",d:"Two-storey / larger · 2,800–4,500 sq ft"},
       {k:"estate",t:"Estate",d:"4,500+ sq ft or complex"}
     ],
-    stories:true,
+    stories:true, siding:true, colour:true,
     scopeTitle:"Anything beyond the main siding?",
     scopeSub:"Tap all that apply.",
     scope:[
@@ -584,7 +591,7 @@ const CONTENT = {
 
 /* ---- state ---- */
 const S = { step:1, service:null, rooms:3, roomSize:"standard", band:"medium",
-            stories:"two", scope:{}, tier:"premium", cond:"good" };
+            stories:"two", siding:"wood", colour:"same", scope:{}, tier:"premium", cond:"good" };
 let maxStep = 5;
 
 /* ---- helpers ---- */
@@ -602,13 +609,24 @@ function calc(){
     let addPer = 0;
     for(const k in S.scope){ if(S.scope[k] && P.addOns[k]) addPer += P.addOns[k]; }
     base = (per + addPer) * S.rooms;
+    base *= P.tier[S.tier];
+    base *= P.cond[S.cond];
+  } else if(S.service==="exterior"){
+    // start at the LOW end of the rate range; condition moves us up it (prep spread)
+    const rate = P.rateLo + (P.rateHi - P.rateLo) * P.condPos[S.cond];
+    const sqft = P.sqft[S.band] * P.storyArea[S.stories];
+    base = sqft * rate * P.siding[S.siding];
+    if(S.colour==="change") base *= P.colourX.change;
+    if(S.colour==="white")  base += sqft * P.whitePerSqft;
+    if(S.stories==="three") base += P.scaffold3;
+    for(const k in S.scope){ if(S.scope[k] && P.addOns[k]) base += P.addOns[k]; }
+    base *= P.tier[S.tier];
   } else {
     base = P.band[S.band];
-    if(P.stories && S.service==="exterior") base *= P.stories[S.stories];
     for(const k in S.scope){ if(S.scope[k] && P.addOns[k]) base += P.addOns[k]; }
+    base *= P.tier[S.tier];
+    base *= P.cond[S.cond];
   }
-  base *= P.tier[S.tier];
-  base *= P.cond[S.cond];
   return Math.max(base, PRICING.minShown);
 }
 
@@ -616,7 +634,7 @@ function updateLive(){
   const v = calc();
   const bar = $("#livebar");
   if(S.step>=2 && S.step<=4 && v>0){ bar.classList.remove("hide");
-    $("#liveVal").textContent = money(round50(v*(1-PRICING.spread)))+" – "+money(round50(v*(1+PRICING.spread)));
+    $("#liveVal").textContent = money(round50(Math.max(v*(1-PRICING.spread),PRICING.minShown)))+" – "+money(round50(v*(1+PRICING.spread)));
   } else bar.classList.add("hide");
 }
 
@@ -664,9 +682,27 @@ function renderSize(){
           <div class="chip ${S.stories==='three'?'on':''}" data-story="three">Three+ / tall</div>
         </div></div>`;
     }
+    if(c.siding){
+      html += `<div style="margin-top:18px"><div style="font-weight:600;font-size:15px;margin-bottom:10px">What's the siding?</div>
+        <div class="chips" id="sidingChips">
+          <div class="chip ${S.siding==='stucco'?'on':''}" data-siding="stucco">Stucco</div>
+          <div class="chip ${S.siding==='wood'?'on':''}" data-siding="wood">Wood or Hardie</div>
+          <div class="chip ${S.siding==='vinyl'?'on':''}" data-siding="vinyl">Vinyl or metal</div>
+        </div></div>`;
+    }
+    if(c.colour){
+      html += `<div style="margin-top:18px"><div style="font-weight:600;font-size:15px;margin-bottom:10px">Colour plans?</div>
+        <div class="chips" id="colourChips">
+          <div class="chip ${S.colour==='same'?'on':''}" data-colour="same">Similar colour</div>
+          <div class="chip ${S.colour==='change'?'on':''}" data-colour="change">New colour</div>
+          <div class="chip ${S.colour==='white'?'on':''}" data-colour="white">Going white / light over dark</div>
+        </div></div>`;
+    }
     box.innerHTML = html;
     $$("#bandGrid .opt").forEach(o=>o.onclick=()=>{S.band=o.dataset.band;$$("#bandGrid .opt").forEach(x=>x.classList.remove("sel"));o.classList.add("sel");updateLive();});
     if(c.stories) $$("#storyChips .chip").forEach(ch=>ch.onclick=()=>{S.stories=ch.dataset.story;$$("#storyChips .chip").forEach(x=>x.classList.remove("on"));ch.classList.add("on");updateLive();});
+    if(c.siding) $$("#sidingChips .chip").forEach(ch=>ch.onclick=()=>{S.siding=ch.dataset.siding;$$("#sidingChips .chip").forEach(x=>x.classList.remove("on"));ch.classList.add("on");updateLive();});
+    if(c.colour) $$("#colourChips .chip").forEach(ch=>ch.onclick=()=>{S.colour=ch.dataset.colour;$$("#colourChips .chip").forEach(x=>x.classList.remove("on"));ch.classList.add("on");updateLive();});
   }
 }
 
@@ -729,7 +765,7 @@ const LABELS = {interior:"interior painting",exterior:"exterior painting",cabine
 const RESULT_PHOTO = {interior:"img/svc-interior.jpg",exterior:"img/svc-exterior.jpg",cabinets:"img/cab1.jpg",deck:"img/svc-deck.jpg"};
 function reveal(){
   const v = calc();
-  const lo = round50(v*(1-PRICING.spread));
+  const lo = round50(Math.max(v*(1-PRICING.spread),PRICING.minShown));
   const hi = round50(v*(1+PRICING.spread));
   $("#resultHead").textContent = "Your "+LABELS[S.service]+" estimate";
   $("#resultPhoto").src = RESULT_PHOTO[S.service] || RESULT_PHOTO.interior;
@@ -815,7 +851,7 @@ $("#leadForm").addEventListener("submit", async e=>{
   const fd = Object.fromEntries(new FormData(e.target).entries());
   delete fd.company;
   const v = calc();
-  const low = round50(v*(1-PRICING.spread)), high = round50(v*(1+PRICING.spread));
+  const low = round50(Math.max(v*(1-PRICING.spread),PRICING.minShown)), high = round50(v*(1+PRICING.spread));
   const scope = Object.keys(S.scope).filter(k=>S.scope[k]).join(", ");
   const eid = 'cp-'+Date.now()+'-'+Math.floor(Math.random()*1e6);  // shared id: browser + server dedupe
   const payload = { ...fd, source:"Website Instant Estimator",
@@ -824,7 +860,7 @@ $("#leadForm").addEventListener("submit", async e=>{
     // fields the Companion Railway lead handler reads (name/phone/town/reason/page)
     name:((fd.firstName||"")+" "+(fd.lastName||"")).trim(), town:(fd.address||""), page:"estimate",
     gclid:getC('_gclid'), fbp:getC('_fbp'), fbc:getC('_fbc'), event_id:eid,
-    reason:"INSTANT ESTIMATOR: "+S.service+" | est $"+low+" to $"+high+" | "+(scope||"walls")+" | timeframe "+(fd.timeframe||"n/a")+" | email "+(fd.email||"n/a") };
+    reason:"INSTANT ESTIMATOR: "+S.service+" | est $"+low+" to $"+high+(S.service==="exterior"?" | "+S.siding+" siding, "+S.stories+" storey, colour: "+S.colour:"")+" | "+(scope||"walls")+" | timeframe "+(fd.timeframe||"n/a")+" | email "+(fd.email||"n/a") };
   // (1) client-side signal -> Google Ads conversion + GA4 + Meta browser Lead (event_id dedupes with server CAPI)
   try{gtag('event','conversion',{send_to:'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}
   try{gtag('event','generate_lead',{value:0,currency:'CAD'});}catch(_){}
