@@ -423,6 +423,13 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;bac
         <div class="field"><label>Mobile number</label><input name="phone" type="tel" required placeholder="(778) 000-0000"></div>
         <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com"></div>
         <div class="field"><label>Property address or area</label><input name="address" required placeholder="Kelowna, BC"></div>
+        <div class="field"><label>What type of property?</label>
+          <select name="propertyType">
+            <option>Home</option>
+            <option>Commercial</option>
+            <option>Strata / multi-unit</option>
+          </select>
+        </div>
         <div class="field"><label>When are you hoping to start?</label>
           <select name="timeframe">
             <option>As soon as possible</option>
@@ -860,7 +867,7 @@ $("#leadForm").addEventListener("submit", async e=>{
     // fields the Companion Railway lead handler reads (name/phone/town/reason/page)
     name:((fd.firstName||"")+" "+(fd.lastName||"")).trim(), town:(fd.address||""), page:"estimate",
     gclid:getC('_gclid'), fbp:getC('_fbp'), fbc:getC('_fbc'), event_id:eid,
-    reason:"INSTANT ESTIMATOR: "+S.service+" | est $"+low+" to $"+high+(S.service==="exterior"?" | "+S.siding+" siding, "+S.stories+" storey, colour: "+S.colour:"")+" | "+(scope||"walls")+" | timeframe "+(fd.timeframe||"n/a")+" | email "+(fd.email||"n/a") };
+    reason:"INSTANT ESTIMATOR: "+S.service+" | "+(fd.propertyType||"Home")+" | est $"+low+" to $"+high+(S.service==="exterior"?" | "+S.siding+" siding, "+S.stories+" storey, colour: "+S.colour:"")+" | "+(scope||"walls")+" | timeframe "+(fd.timeframe||"n/a")+" | email "+(fd.email||"n/a") };
   // (1) client-side signal -> Google Ads conversion + GA4 + Meta browser Lead (event_id dedupes with server CAPI)
   try{gtag('event','conversion',{send_to:'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}
   try{gtag('event','generate_lead',{value:0,currency:'CAD'});}catch(_){}
