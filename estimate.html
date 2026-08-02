@@ -501,7 +501,9 @@ const PRICING = {
     condPos:{ good:0.2, fair:0.6, heavy:0.95 },      // good=bottom third, fair=middle, needs-work=top
     storyArea:{ one:1.0, two:1.4, three:1.65 },      // taller = more wall
     scaffold3: 1000,                                 // 3+/tall flat scaffolding line
-    siding: { stucco:1.15, wood:1.0, vinyl:0.95 },   // stucco drinks paint
+    // stucco drinks paint; AGED stucco drinks 3.5x more (Taylor's $108 card:
+    // 100 sqft/gal vs 350 -> all-in (127+374)/(127+107) = 2.14x recent stucco)
+    siding: { stucco:1.15, stuccoAged:2.46, wood:1.0, vinyl:0.95 },
     colourX:{ same:1.0, change:1.06 },
     whitePerSqft: 0.28,                              // rate-card change-to-white line
     addOns:{ trim:750, garage:180, deckSoffit:650, fenceLink:600 },
@@ -519,7 +521,10 @@ const PRICING = {
     band:  { small:1200, medium:2400, large:4000 },
     addOns:{ railings:600, stairs:350, fence:500, pergola:750 },
     tier:  { standard:1.0, premium:1.12, designer:1.28 },
-    cond:  { good:1.0, fair:1.18, heavy:1.4 }
+    // Taylor's $108 card by condition: 60/39/18 sqft/hr -> per 100 sqft all-in
+    // $290 / $387 / $710 = ratios 1.0 / 1.33 / 2.45. Old 1.4 halved real
+    // full-refinish jobs.
+    cond:  { good:1.0, fair:1.33, heavy:2.45 }
   }
 };
 
@@ -692,7 +697,8 @@ function renderSize(){
     if(c.siding){
       html += `<div style="margin-top:18px"><div style="font-weight:600;font-size:15px;margin-bottom:10px">What's the siding?</div>
         <div class="chips" id="sidingChips">
-          <div class="chip ${S.siding==='stucco'?'on':''}" data-siding="stucco">Stucco</div>
+          <div class="chip ${S.siding==='stucco'?'on':''}" data-siding="stucco">Stucco, painted in the last 5 years</div>
+          <div class="chip ${S.siding==='stuccoAged'?'on':''}" data-siding="stuccoAged">Stucco, older or never painted</div>
           <div class="chip ${S.siding==='wood'?'on':''}" data-siding="wood">Wood or Hardie</div>
           <div class="chip ${S.siding==='vinyl'?'on':''}" data-siding="vinyl">Vinyl or metal</div>
         </div></div>`;
