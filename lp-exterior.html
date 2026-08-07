@@ -141,6 +141,9 @@
     .steps{grid-template-columns:1fr 1fr;gap:20px}
     .gal{grid-template-columns:repeat(2,1fr)}
     .tel span{display:none}
+    /* 44px minimum tap target for click-to-call (Aug 7). Negative margin keeps the
+       visual header identical while the hit area grows. */
+    .tel{min-height:44px;padding:10px 6px;margin:-10px -6px}
     .sticky-cta{display:block}
     body{padding-bottom:70px}
   }
