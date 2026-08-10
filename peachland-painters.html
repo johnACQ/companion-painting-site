@@ -684,7 +684,7 @@
         form.reportValidity&&form.reportValidity();return;}
       var btn=form.querySelector('button[type=submit]'); if(btn){btn.disabled=true;btn.style.opacity=.7;btn.textContent='Sending…';}
       var eid=uuid();
-      var data={sms_consent:!!(form.querySelector('[name=sms_consent]')&&form.querySelector('[name=sms_consent]').checked),name:form.name.value.trim(),phone:form.phone.value.trim(),email:form.email.value.trim(),
+      var data={sms_consent:!!form.querySelector('[name=sms_consent]:checked'),name:form.name.value.trim(),phone:form.phone.value.trim(),email:form.email.value.trim(),
         town:val('town'),reason:val('reason'),timeframe:val('timeframe'),
         source:SOURCE_LABEL,page:(location.pathname.split('/').pop()||'').replace('.html',''),gclid:getC('_gclid'),fbp:getC('_fbp'),fbc:getC('_fbc'),event_id:eid};
       try{gtag('event','conversion',{'send_to':'AW-18338007193/a9mfCKnUsNQcEJmRn6hE'});}catch(_){}

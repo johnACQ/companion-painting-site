@@ -868,7 +868,7 @@ $("#leadForm").addEventListener("submit", async e=>{
   const low = round50(Math.max(v*(1-PRICING.spread),PRICING.minShown)), high = round50(v*(1+PRICING.spread));
   const scope = Object.keys(S.scope).filter(k=>S.scope[k]).join(", ");
   const eid = 'cp-'+Date.now()+'-'+Math.floor(Math.random()*1e6);  // shared id: browser + server dedupe
-  const payload = { ...fd, sms_consent:!!(e.target.sms_consent && e.target.sms_consent.checked), source:"Website Instant Estimator",
+  const payload = { ...fd, sms_consent:!!e.target.querySelector('[name=sms_consent]:checked'), source:"Website Instant Estimator",
     service:S.service, estimateLow:low, estimateHigh:high,
     rooms:S.rooms, roomSize:S.roomSize, sizeBand:S.band, stories:S.stories, tier:S.tier, condition:S.cond, scope,
     // fields the Companion Railway lead handler reads (name/phone/town/reason/page)
