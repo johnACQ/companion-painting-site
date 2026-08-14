@@ -344,7 +344,7 @@
       this.reportValidity&&this.reportValidity();return;}
     function getC(n){var v=('; '+document.cookie).split('; '+n+'=');return v.length===2?v.pop().split(';').shift():'';}
     var eid='cp-'+Date.now()+'-'+Math.floor(Math.random()*1e6);     // shared id: browser + server dedupe
-    var payload={sms_consent:!!this.querySelector('[name=sms_consent]:checked'),name:this.name.value,phone:this.phone.value,email:this.email.value,
+    var payload={sms_consent:!!this.querySelector('[name=sms_consent]:checked'),sms_offers_consent:!!this.querySelector('[name=sms_offers_consent]:checked'),name:this.name.value,phone:this.phone.value,email:this.email.value,
       town:town,reason:reason,timeframe:timeframe,
       page:(location.pathname.split('/').pop()||'lp').replace('.html',''),
       gclid:getC('_gclid'),fbp:getC('_fbp'),fbc:getC('_fbc'),event_id:eid,source:'google-lp'};
