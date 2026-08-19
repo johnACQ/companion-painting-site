@@ -147,6 +147,15 @@
     .sticky-cta{display:block}
     body{padding-bottom:70px}
   }
+
+  /* LP footer nav — added 2026-08-19. Google rates these pages BELOW_AVERAGE on
+     landing page experience (QS 3) while the homepage, which has real navigation,
+     rates ABOVE_AVERAGE (QS 7). Nav lives in the FOOTER on purpose: the header is
+     deliberately logo + tap-to-call only to hold the attention ratio down, and that
+     CRO decision is preserved. */
+  .lpnav{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin:0 0 14px}
+  .lpnav a{font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+  .lpnav a:hover{color:var(--brand)}
 </style>
 </head>
 <body>
@@ -285,7 +294,16 @@
 </section>
 
 <footer>
-  <div class="wrap fl">
+    <nav class="lpnav" aria-label="Site">
+    <a href="index.html">Home</a>
+    <a href="exterior-painting.html">Exterior painting</a>
+    <a href="interior-painting.html">Interior painting</a>
+    <a href="cabinet-painting.html">Cabinet refinishing</a>
+    <a href="about.html">About Companion</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="sms-terms.html">SMS terms</a>
+  </nav>
+<div class="wrap fl">
     <span>Taylor Norquay O/A Companion Painting</span><span>&middot;</span><span>Unit #2 - 758 Coopland Cres, Kelowna BC V1Y 2V1</span><span>·</span><span>BC Licensed FM1112157</span><span>·</span>
     <span>Fully insured</span><span>·</span><span>craftsmanship warranty of up to 9 years</span><span>·</span><span>Kelowna &amp; the Okanagan</span>
   </div>
