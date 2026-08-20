@@ -192,13 +192,11 @@
 
           <div class="fc-step on" id="step1">
             <div class="fc-q">What needs painting?</div>
-          <select name="reason" required><option value="" disabled selected>Choose one…</option><option>Whole house (siding, trim, doors)</option><option>Just siding or stucco</option><option>Just trim, doors &amp; fascia</option><option>Deck, fence or railings</option><option>Not sure yet</option></select>
-            <div class="fc-q">How soon are you looking to get it done?</div>
-          <select name="timeframe" required><option value="" disabled selected>Choose one…</option><option>As soon as possible</option><option>In the next month</option><option>In 2 to 3 months</option></select>
+          <select name="reason"><option value="" disabled selected>Choose one…</option><option>Whole house (siding, trim, doors)</option><option>Just siding or stucco</option><option>Just trim, doors &amp; fascia</option><option>Deck, fence or railings</option><option>Not sure yet</option></select>
             <div class="fc-q">Where are you located?</div>
           <select name="town" required><option value="" disabled selected>Choose your town…</option><option>Kelowna</option><option>West Kelowna</option><option>Lake Country</option><option>Peachland</option><option>Vernon</option><option>Winfield</option><option>Other / nearby</option></select>
             <button class="fc-btn" type="button" id="fcNext">Continue</button>
-            <div class="fc-err" id="fcErr">Pick an option for each question to continue.</div>
+            <div class="fc-err" id="fcErr">Pick your town to continue.</div>
             <div class="fc-micro">BC Licensed FM1112157 · Fully insured · craftsmanship warranty of up to 9 years<label class="a2p-optin" style="display:flex;align-items:flex-start;gap:8px;margin-top:8px;text-align:left;cursor:pointer"><input type="checkbox" name="sms_consent" value="yes" style="margin-top:3px;width:16px;height:16px;flex:0 0 auto;accent-color:#070ccb"><span style="opacity:.85;font-size:.82em;line-height:1.5">Yes, text me about my estimate. Companion Painting will send you estimate updates and appointment and scheduling messages. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out. Optional, and not required to submit.</span></label><label class="a2p-optin" style="display:flex;align-items:flex-start;gap:8px;margin-top:8px;text-align:left;cursor:pointer"><input type="checkbox" name="sms_offers_consent" value="yes" style="margin-top:3px;width:16px;height:16px;flex:0 0 auto;accent-color:#070ccb"><span style="opacity:.85;font-size:.82em;line-height:1.5">Separately, yes to occasional painting offers from Companion Painting. Message frequency varies. Message and data rates may apply. Reply HELP for help, STOP to opt out. Optional, and not required to submit.</span></label><span class="a2p-consent" style="display:block;margin-top:8px;opacity:.85;font-size:.82em;line-height:1.5">By submitting you agree to receive calls and emails from Companion Painting, operated by Taylor Norquay, about your estimate. <a href="sms-terms.html" style="text-decoration:underline;color:inherit">SMS Terms</a> and <a href="privacy.html" style="text-decoration:underline;color:inherit">Privacy Policy</a>.</span></div>
           </div>
 
@@ -292,7 +290,6 @@
     <p class="kicker">Common questions</p>
     <h2>Good to know before you book.</h2>
     <div class="faq"><details><summary>Is the estimate really free?</summary><p>Yes. We come out, take a look, and give you a clear written quote with no obligation and no pushy follow-ups. You decide on your terms.</p></details><details><summary>Are you licensed and insured?</summary><p>Yes. BC Licensed (FM1112157) and fully insured with $3M liability, and every job is backed by a craftsmanship warranty of up to 9 years.</p></details><details><summary>What does a repaint cost?</summary><p>It depends on the size, the surfaces and how much prep is involved, which is why we quote in person instead of throwing out a number that creeps up later. We're not the cheapest, but the price we quote is the price you pay, and it's done once.</p></details><details><summary>How soon can you start?</summary><p>Once you're happy with the quote we confirm a start date and tell you what to expect ahead of time, so nothing feels last-minute. Exterior season books up, so earlier is better.</p></details><details><summary>Do you cover my town?</summary><p>We paint across Kelowna, West Kelowna, Lake Country, Peachland, Vernon and nearby. Pick your town on the form and we'll confirm.</p></details><details><summary>Do you do interiors as well?</summary><p>Yes. Exteriors are the bulk of our work, and we do interior repaints as well. Tell us which on the form and we will scope it properly. Tell us on the form and we'll scope it in the quote.</p></details><details><summary>What if the weather turns?</summary><p>We plan around it. Exterior coatings need the right conditions to cure properly, so we won't rush a coat just to hit a date. That's how finishes fail early.</p></details>
-<details><summary>Is there a minimum job size?</summary><p>Yes. Our minimum is $2,000. Below that we are honestly not your best option, and you deserve to hear that upfront rather than after you have waited on a quote.</p></details>
 <details><summary>What do I need to do before you arrive?</summary><p>Not much. Move anything breakable clear of the walls, inside or out, and tell us about pets, gate codes and parking. We handle the covering and the rest.</p></details></div>
   </div>
 </section>
@@ -346,7 +343,7 @@
     function val(n){var el=f.querySelector('[name="'+n+'"]');return el?el.value:'';}
     document.getElementById('fcNext').addEventListener('click',function(){
       var err=document.getElementById('fcErr');
-      if(!val('reason')||!val('timeframe')||!val('town')){err.classList.add('on');return;}
+      if(!val('town')){err.classList.add('on');return;}
       err.classList.remove('on');
       document.getElementById('step1').classList.remove('on');
       document.getElementById('step2').classList.add('on');
@@ -371,7 +368,7 @@
     function val(n){var el=this.querySelector('[name="'+n+'"]');return el?el.value:'';}
     val=val.bind(this);
     var reason=val('reason'), timeframe=val('timeframe'), town=val('town');
-    if(!this.name.value||!this.phone.value||!this.email.value||!reason||!timeframe||!town){
+    if(!this.name.value||!this.phone.value||!this.email.value||!town){
       this.reportValidity&&this.reportValidity();return;}
     function getC(n){var v=('; '+document.cookie).split('; '+n+'=');return v.length===2?v.pop().split(';').shift():'';}
     var eid='cp-'+Date.now()+'-'+Math.floor(Math.random()*1e6);     // shared id: browser + server dedupe
